@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Josify — 補助金・助成金 申請サポートAI</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <span class="logo-mark">⚡</span>
+      <span class="logo-text">Josify</span>
+      <span class="logo-tagline">補助金・助成金 一発申請サポート</span>
+    </div>
+  </header>
+
+  <!-- Progress Bar -->
+  <div class="progress-wrap">
+    <div class="progress-bar">
+      <div class="step-node active" id="node-1">
+        <div class="node-circle">1</div>
+        <div class="node-label">基本情報</div>
+      </div>
+      <div class="step-line" id="line-1-2"></div>
+      <div class="step-node" id="node-2">
+        <div class="node-circle">2</div>
+        <div class="node-label">マッチング</div>
+      </div>
+      <div class="step-line" id="line-2-3"></div>
+      <div class="step-node" id="node-3">
+        <div class="node-circle">3</div>
+        <div class="node-label">書類準備</div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- ======= STEP 1: 基本情報入力 ======= -->
+    <section id="step-1" class="step-content active">
+      <div class="step-header">
+        <h2>事業者情報を入力してください</h2>
+        <p>入力内容に基づいてAIが最適な補助金・助成金を提案します</p>
+      </div>
+
+      <form id="profile-form">
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="company-name">会社名・屋号</label>
+            <input type="text" id="company-name" placeholder="例：株式会社〇〇 / 田中太郎">
+          </div>
+
+          <div class="form-group">
+            <label for="industry">業種 <span class="required">*</span></label>
+            <select id="industry" required>
+              <option value="">選択してください</option>
+              <option value="製造業">製造業</option>
+              <option value="IT・情報通信業">IT・情報通信業</option>
+              <option value="建設業">建設業</option>
+              <option value="小売業">小売業</option>
+              <option value="卸売業">卸売業</option>
+              <option value="飲食業">飲食業</option>
+              <option value="サービス業">サービス業</option>
+              <option value="医療・福祉">医療・福祉</option>
+              <option value="農業・林業・水産業">農業・林業・水産業</option>
+              <option value="運輸・物流">運輸・物流</option>
+              <option value="不動産業">不動産業</option>
+              <option value="教育・学習支援">教育・学習支援</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="employees">従業員数 <span class="required">*</span></label>
+            <select id="employees" required>
+              <option value="">選択してください</option>
+              <option value="1">1名（個人事業主）</option>
+              <option value="2">2〜5名</option>
+              <option value="5">6〜20名</option>
+              <option value="21">21〜50名</option>
+              <option value="51">51〜100名</option>
+              <option value="101">101〜300名</option>
+              <option value="301">301名以上</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="prefecture">所在地（都道府県）<span class="required">*</span></label>
+            <select id="prefecture" required>
+              <option value="">選択してください</option>
+              <option>北海道</option><option>青森県</option><option>岩手県</option>
+              <option>宮城県</option><option>秋田県</option><option>山形県</option>
+              <option>福島県</option><option>茨城県</option><option>栃木県</option>
+              <option>群馬県</option><option>埼玉県</option><option>千葉県</option>
+              <option>東京都</option><option>神奈川県</option><option>新潟県</option>
+              <option>富山県</option><option>石川県</option><option>福井県</option>
+              <option>山梨県</option><option>長野県</option><option>岐阜県</option>
+              <option>静岡県</option><option>愛知県</option><option>三重県</option>
+              <option>滋賀県</option><option>京都府</option><option>大阪府</option>
+              <option>兵庫県</option><option>奈良県</option><option>和歌山県</option>
+              <option>鳥取県</option><option>島根県</option><option>岡山県</option>
+              <option>広島県</option><option>山口県</option><option>徳島県</option>
+              <option>香川県</option><option>愛媛県</option><option>高知県</option>
+              <option>福岡県</option><option>佐賀県</option><option>長崎県</option>
+              <option>熊本県</option><option>大分県</option><option>宮崎県</option>
+              <option>鹿児島県</option><option>沖縄県</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="established">設立年数 <span class="required">*</span></label>
+            <select id="established" required>
+              <option value="">選択してください</option>
+              <option value="0">設立1年未満</option>
+              <option value="1">1〜3年</option>
+              <option value="3">3〜5年</option>
+              <option value="5">5〜10年</option>
+              <option value="10">10年以上</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="revenue">年商（概算）<span class="required">*</span></label>
+            <select id="revenue" required>
+              <option value="">選択してください</option>
+              <option value="500万円未満">500万円未満</option>
+              <option value="500〜1,000万円">500〜1,000万円</option>
+              <option value="1,000〜3,000万円">1,000〜3,000万円</option>
+              <option value="3,000〜5,000万円">3,000〜5,000万円</option>
+              <option value="5,000万〜1億円">5,000万〜1億円</option>
+              <option value="1〜5億円">1〜5億円</option>
+              <option value="5億円以上">5億円以上</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="capital">資本金（任意）</label>
+            <input type="text" id="capital" placeholder="例：300万円">
+          </div>
+
+        </div>
+
+        <div class="form-group full-width">
+          <label>事業の目標・課題 <span class="required">*</span>（複数選択可）</label>
+          <div class="checkbox-grid">
+            <label class="check-item"><input type="checkbox" value="設備投資"><span>設備投資・機械導入</span></label>
+            <label class="check-item"><input type="checkbox" value="DX推進"><span>DX・IT化推進</span></label>
+            <label class="check-item"><input type="checkbox" value="採用"><span>人材採用</span></label>
+            <label class="check-item"><input type="checkbox" value="人材育成"><span>人材育成・研修</span></label>
+            <label class="check-item"><input type="checkbox" value="販路拡大"><span>販路拡大・マーケティング</span></label>
+            <label class="check-item"><input type="checkbox" value="生産性向上"><span>生産性向上・業務効率化</span></label>
+            <label class="check-item"><input type="checkbox" value="新規事業"><span>事業拡大・新規展開</span></label>
+            <label class="check-item"><input type="checkbox" value="賃上げ"><span>賃金引き上げ</span></label>
+            <label class="check-item"><input type="checkbox" value="省エネ"><span>省エネルギー・脱炭素</span></label>
+            <label class="check-item"><input type="checkbox" value="事業承継"><span>事業承継・M&A</span></label>
+            <label class="check-item"><input type="checkbox" value="研究開発"><span>研究開発・新技術</span></label>
+            <label class="check-item"><input type="checkbox" value="事業転換"><span>業態転換・新分野展開</span></label>
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="description">事業の概要・困っていること（任意）</label>
+          <textarea id="description" rows="3" placeholder="例：製造業で老朽化した機械の更新を検討中。従業員のパソコンスキルが低く業務効率化に課題がある。来期から新しい商品ラインの開発を始めたい。"></textarea>
+          <div class="field-hint">AIのドラフト品質が上がります。具体的に書くほど精度が向上します。</div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary btn-large" id="match-btn">
+            <span class="btn-icon">🔍</span>
+            補助金・助成金を検索する
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ======= STEP 2: マッチング結果 ======= -->
+    <section id="step-2" class="step-content">
+      <div class="step-header">
+        <h2>マッチした補助金・助成金</h2>
+        <p>興味のある補助金を選択して書類準備に進んでください（複数選択可）</p>
+      </div>
+
+      <div id="matching-loading" class="loading-box">
+        <div class="spinner"></div>
+        <p>AIが最適な補助金を分析中です...<br><small>通常10〜20秒かかります</small></p>
+      </div>
+
+      <div id="subsidy-list" class="subsidy-grid hidden"></div>
+      <p class="data-notice hidden" id="data-notice">⚠️ 掲載情報は参考目的です。補助金の要件・金額・締切は変更になる場合があります。必ず公式サイトで最新情報をご確認ください。</p>
+
+      <div id="step2-actions" class="form-actions hidden">
+        <button id="back-to-1" class="btn-secondary">← 戻る</button>
+        <button id="proceed-to-3" class="btn-primary btn-large" disabled>
+          <span class="btn-icon">📋</span>
+          必要書類を確認する
+          <span id="selected-count" class="badge">0</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ======= STEP 3: 必要書類 ======= -->
+    <section id="step-3" class="step-content">
+      <div class="step-header">
+        <h2>必要書類一覧</h2>
+        <p>選択した補助金の申請に必要な書類です</p>
+      </div>
+
+      <div id="docs-container"></div>
+
+      <div class="form-actions" style="margin-top:32px">
+        <button id="back-to-2" class="btn-secondary">← 戻る</button>
+        <button id="restart-btn" class="btn-secondary">最初からやり直す</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Josify ⚡ — AIによる補助金・助成金申請サポート | 情報は参考目的です。申請は必ず公式窓口・専門家にご確認ください。</p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

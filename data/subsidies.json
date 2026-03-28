@@ -1,0 +1,1026 @@
+[
+  {
+    "id": "monodukuri",
+    "name": "ものづくり・商業・サービス生産性向上促進補助金",
+    "short_name": "ものづくり補助金",
+    "category": "設備投資・生産性向上",
+    "administering_body": "全国中小企業団体中央会",
+    "official_url": "https://portal.monodukuri-hojo.jp/",
+    "max_amount": "1,250万円（グローバル展開型は3,000万円）",
+    "subsidy_rate": "1/2（小規模・再生事業者は2/3）",
+    "description": "中小企業・小規模事業者が取り組む革新的な製品・サービス開発、生産プロセスの改善等を支援する補助金。設備投資を伴う場合に利用しやすい。",
+    "eligibility": {
+      "company_size": "中小企業者・小規模事業者（業種別従業員数上限あり）",
+      "industries": [
+        "製造業",
+        "建設業",
+        "運輸業",
+        "サービス業",
+        "小売業",
+        "IT・情報通信業"
+      ],
+      "goals": [
+        "設備投資",
+        "生産性向上",
+        "DX推進",
+        "新製品開発",
+        "研究開発"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "monodukuri-business-plan",
+        "name": "事業計画書（様式2）",
+        "type": "draft",
+        "description": "補助事業の具体的内容・革新性・期待される効果を記載。10〜15ページ程度。",
+        "draft_topic": "ものづくり補助金の事業計画書",
+        "notes": "審査のカギとなる最重要書類。革新性・優位性・市場性を具体的な数値で記載すること。"
+      },
+      {
+        "id": "monodukuri-financial",
+        "name": "直近2期分の決算書（貸借対照表・損益計算書）",
+        "type": "guidance",
+        "how_to_obtain": "自社の経理担当者または顧問税理士に依頼。電子申告済みの確定申告書類一式でも可。直近2期分を必ず準備してください。"
+      },
+      {
+        "id": "monodukuri-application-form",
+        "name": "交付申請書（様式1）",
+        "type": "link",
+        "form_url": "https://portal.monodukuri-hojo.jp/common/bunsho.html",
+        "notes": "Jグランツ（電子申請システム）から提出。GビズIDプライムアカウントが必要。"
+      },
+      {
+        "id": "monodukuri-quote",
+        "name": "見積書（50万円以上の場合は2者以上）",
+        "type": "guidance",
+        "how_to_obtain": "導入予定の設備・システム業者から見積書を取得。50万円以上の場合は相見積もりが必要。業者に「補助金申請用の見積書」と明示して依頼してください。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "製造業・建設業・サービス業に該当",
+        "設備投資が目標に含まれる",
+        "新製品開発・研究開発を検討している",
+        "従業員数が業種別上限以下"
+      ],
+      "low_score_conditions": [
+        "設備投資を予定していない",
+        "事業の革新性が低い"
+      ]
+    },
+    "tags": [
+      "製造業",
+      "設備投資",
+      "生産性向上",
+      "IT",
+      "DX",
+      "中小企業",
+      "新製品開発"
+    ],
+    "application_url": "https://portal.monodukuri-hojo.jp/",
+    "deadline": "2025年7月31日",
+    "application_method": "電子申請（Jグランツ）"
+  },
+  {
+    "id": "it-donyu",
+    "name": "IT導入補助金",
+    "short_name": "IT導入補助金",
+    "category": "DX・IT化",
+    "administering_body": "一般社団法人サービスデザイン推進協議会",
+    "official_url": "https://www.it-hojo.jp/",
+    "max_amount": "通常枠：450万円、セキュリティ対策推進枠：100万円、インボイス枠：350万円",
+    "subsidy_rate": "1/2〜4/5（枠による）",
+    "description": "中小企業・小規模事業者のITツール導入を支援。会計ソフト・受発注・在庫管理・ECなど幅広く対応。インボイス制度対応のシステム導入も対象。",
+    "eligibility": {
+      "company_size": "中小企業者・小規模事業者",
+      "industries": [
+        "全業種（一部除外あり）"
+      ],
+      "goals": [
+        "IT化",
+        "DX推進",
+        "業務効率化",
+        "販路拡大",
+        "インボイス対応"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "it-donyu-gviz-id",
+        "name": "GビズIDプライムアカウント",
+        "type": "guidance",
+        "how_to_obtain": "https://gbiz-id.go.jp/ から申請。法人は登記情報、個人事業主はマイナンバーカードが必要。取得に1〜2週間かかるため早めに準備を。"
+      },
+      {
+        "id": "it-donyu-application",
+        "name": "IT導入支援事業者との共同申請（交付申請書）",
+        "type": "guidance",
+        "how_to_obtain": "IT導入補助金公式サイトに登録されている「IT導入支援事業者」と一緒に申請する仕組み。まず導入したいITツールのベンダー（支援事業者）を選定し、ベンダーから申請サポートを受けてください。"
+      },
+      {
+        "id": "it-donyu-business-plan",
+        "name": "IT導入による生産性向上計画",
+        "type": "draft",
+        "description": "導入するITツールの内容・現状課題・導入後の生産性向上効果を記載",
+        "draft_topic": "IT導入補助金の導入計画書・生産性向上計画",
+        "notes": "数値目標（業務時間削減率、売上向上見込みなど）を具体的に記載すると採択率向上。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "ITシステム導入・デジタル化が目標",
+        "業務効率化を目指している",
+        "インボイス対応が必要",
+        "ECサイト・オンライン販売を検討中"
+      ],
+      "low_score_conditions": [
+        "既にITシステムが充実している",
+        "設備投資（ハードウェア単体）のみを希望"
+      ]
+    },
+    "tags": [
+      "IT化",
+      "DX",
+      "システム導入",
+      "業務効率化",
+      "インボイス",
+      "小規模事業者"
+    ],
+    "application_url": "https://www.it-hojo.jp/",
+    "deadline": "2025年6月30日",
+    "application_method": "電子申請（IT導入支援事業者経由）"
+  },
+  {
+    "id": "jizokukaijo",
+    "name": "小規模事業者持続化補助金",
+    "short_name": "持続化補助金",
+    "category": "販路開拓・マーケティング",
+    "administering_body": "日本商工会議所・全国商工会連合会",
+    "official_url": "https://jizokukasenryaku.go.jp/",
+    "max_amount": "通常枠：50万円、賃金引上げ枠・卒業枠等：200万円",
+    "subsidy_rate": "2/3（賃金引上げ等の特別枠は3/4）",
+    "description": "小規模事業者の販路開拓・マーケティング活動を支援。チラシ・広告・展示会出展・ECサイト構築など幅広く対象。商工会・商工会議所のサポートが受けられる。",
+    "eligibility": {
+      "company_size": "小規模事業者（商業・サービス業：従業員5人以下、製造業等：20人以下）",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "販路拡大",
+        "マーケティング",
+        "集客強化",
+        "EC展開",
+        "新商品開発"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "jizokukaijo-keiei-plan",
+        "name": "経営計画書（様式2）",
+        "type": "draft",
+        "description": "自社の概要・強み・経営状況・今後の目標を記載",
+        "draft_topic": "小規模事業者持続化補助金の経営計画書",
+        "notes": "商工会・商工会議所の指導を受けながら作成することが推奨。地域の商工会に相談を。"
+      },
+      {
+        "id": "jizokukaijo-hojokin-plan",
+        "name": "補助事業計画書（様式3）",
+        "type": "draft",
+        "description": "販路開拓の具体的な取り組み内容・目標・費用内訳を記載",
+        "draft_topic": "小規模事業者持続化補助金の補助事業計画書（販路開拓計画）",
+        "notes": "「誰に・何を・どのように売るか」を明確に。費用の必要性も説明が必要。"
+      },
+      {
+        "id": "jizokukaijo-tax",
+        "name": "直近の確定申告書（写し）",
+        "type": "guidance",
+        "how_to_obtain": "個人事業主は確定申告書B（第一表・第二表）、法人は決算書（法人税申告書別表）。税務署の受付印があるもの、またはe-Taxの受信通知を準備。"
+      },
+      {
+        "id": "jizokukaijo-shomeisho",
+        "name": "地域の商工会・商工会議所の確認書",
+        "type": "guidance",
+        "how_to_obtain": "所在地の商工会または商工会議所に訪問し、経営計画書の内容確認・押印を依頼。申請前に必ず窓口で相談してください（無料支援が受けられます）。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "小規模事業者に該当（従業員5〜20人以下）",
+        "販路拡大・集客が目標",
+        "地方の事業者",
+        "新商品・新サービス開発を計画中"
+      ],
+      "low_score_conditions": [
+        "大企業・中堅企業",
+        "設備投資のみが目的"
+      ]
+    },
+    "tags": [
+      "小規模",
+      "販路開拓",
+      "チラシ",
+      "広告",
+      "EC",
+      "マーケティング",
+      "商工会"
+    ],
+    "application_url": "https://jizokukasenryaku.go.jp/",
+    "deadline": "2025年12月31日",
+    "application_method": "オンライン申請"
+  },
+  {
+    "id": "jigyou-saikouchiku",
+    "name": "事業再構築補助金",
+    "short_name": "事業再構築補助金",
+    "category": "新分野展開・事業転換",
+    "administering_body": "中小企業庁",
+    "official_url": "https://jigyou-saikouchiku.go.jp/",
+    "max_amount": "通常枠：7,000万円、成長分野進出枠：1億5,000万円",
+    "subsidy_rate": "1/2〜2/3（枠・規模による）",
+    "description": "コロナ禍等の影響を受けた中小企業が、ポストコロナの社会変化に対応した新分野展開・業態転換・事業転換等を支援。思い切った事業変革に最大規模の補助金。",
+    "eligibility": {
+      "company_size": "中小企業者・中堅企業",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "事業転換",
+        "新規事業",
+        "新分野展開",
+        "業態転換",
+        "事業再構築"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "saikouchiku-business-plan",
+        "name": "事業計画書",
+        "type": "draft",
+        "description": "新分野展開・転換の内容、市場分析、実施体制、資金調達計画を詳細に記載。20〜30ページ程度。",
+        "draft_topic": "事業再構築補助金の事業計画書（新規事業・業態転換計画）",
+        "notes": "認定経営革新等支援機関（認定支援機関）との共同申請が必須。税理士・中小企業診断士等に相談を。"
+      },
+      {
+        "id": "saikouchiku-financial-analysis",
+        "name": "財務分析資料（売上減少証明など）",
+        "type": "guidance",
+        "how_to_obtain": "申請枠によって要件が異なります。認定支援機関（税理士・中小企業診断士等）に確認のうえ準備。直近の確定申告書・試算表を用意しておくとスムーズです。"
+      },
+      {
+        "id": "saikouchiku-support-agency",
+        "name": "認定経営革新等支援機関との確認書",
+        "type": "guidance",
+        "how_to_obtain": "中小企業庁のサイト（https://ninteishien.force.com/）で認定支援機関を検索し、事業計画書の策定サポートを依頼。費用は無料〜有料機関によって異なります。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "新規事業・新分野展開を検討中",
+        "既存事業から事業転換を考えている",
+        "大きな投資（建物改修・大型設備）を検討中"
+      ],
+      "low_score_conditions": [
+        "既存事業の延長線上の取り組み",
+        "小規模な費用のみ"
+      ]
+    },
+    "tags": [
+      "新規事業",
+      "業態転換",
+      "事業転換",
+      "新分野",
+      "中堅企業",
+      "大型補助金"
+    ],
+    "application_url": "https://www.sbir.go.jp/",
+    "deadline": "2025年8月31日",
+    "application_method": "書面申請"
+  },
+  {
+    "id": "career-up",
+    "name": "キャリアアップ助成金",
+    "short_name": "キャリアアップ助成金",
+    "category": "人材・雇用",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/part_haken/jigyounushi/career.html",
+    "max_amount": "正規雇用等転換コース：最大72万円/人（大企業：57万円）",
+    "subsidy_rate": "定額支給",
+    "description": "非正規雇用労働者（パート・アルバイト・派遣等）の正社員転換や処遇改善を行った事業主に支給。採用強化・人材定着に効果的。",
+    "eligibility": {
+      "company_size": "全規模（大企業も可だが金額低め）",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "採用",
+        "雇用安定",
+        "非正規から正規への転換",
+        "処遇改善"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "career-up-plan",
+        "name": "キャリアアップ計画書",
+        "type": "draft",
+        "description": "有期雇用労働者等のキャリアアップに関する計画（期間・目標・転換基準等）",
+        "draft_topic": "キャリアアップ助成金のキャリアアップ計画書",
+        "notes": "計画書は労働者代表の署名が必要。就業規則の整備も必要な場合あり。"
+      },
+      {
+        "id": "career-up-employment-contract",
+        "name": "雇用契約書（転換前後の対象労働者分）",
+        "type": "guidance",
+        "how_to_obtain": "対象となる労働者の転換前（有期）と転換後（正規）の雇用契約書を準備。社内の労務管理担当者に依頼。"
+      },
+      {
+        "id": "career-up-labor-register",
+        "name": "労働者名簿・出勤簿・賃金台帳",
+        "type": "guidance",
+        "how_to_obtain": "社内の労務書類を整備してください。出勤簿は月次のもの、賃金台帳は転換前後6か月以上分が必要です。社労士に確認を推奨。"
+      },
+      {
+        "id": "career-up-application-form",
+        "name": "支給申請書（様式3号）",
+        "type": "link",
+        "form_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/part_haken/jigyounushi/career.html",
+        "notes": "転換後6か月の賃金支払い後に都道府県労働局またはハローワークへ提出。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "非正規労働者（パート・アルバイト・派遣）を雇用している",
+        "正社員化・正規転換を検討中",
+        "採用・雇用が目標に含まれる"
+      ],
+      "low_score_conditions": [
+        "全員正規雇用で非正規雇用者がいない",
+        "採用予定がない"
+      ]
+    },
+    "tags": [
+      "雇用",
+      "正社員転換",
+      "非正規",
+      "パート",
+      "アルバイト",
+      "人材定着",
+      "採用"
+    ],
+    "application_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/part_haken/jigyounushi/career.html",
+    "deadline": "2025年随時",
+    "application_method": "労働局・ハローワークへ提出"
+  },
+  {
+    "id": "jinzai-kaihatsu",
+    "name": "人材開発支援助成金",
+    "short_name": "人材開発支援助成金",
+    "category": "人材育成",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html",
+    "max_amount": "訓練費用の45〜75%（上限：1人年間30万円程度）",
+    "subsidy_rate": "訓練費用の45〜75%＋賃金助成",
+    "description": "従業員の職業訓練・研修を行った事業主に訓練費用と賃金の一部を助成。OFF-JT研修（外部研修）もOJT訓練も対象。スキルアップ・資格取得に活用できる。",
+    "eligibility": {
+      "company_size": "中小企業（大企業も可だが助成率低め）",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "人材育成",
+        "従業員研修",
+        "スキルアップ",
+        "資格取得"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "jinzai-kaihatsu-plan",
+        "name": "訓練実施計画届（様式3-1号）",
+        "type": "draft",
+        "description": "実施する訓練の内容・期間・対象者・費用等を記載",
+        "draft_topic": "人材開発支援助成金の訓練実施計画書",
+        "notes": "訓練開始の1か月前までに労働局へ提出が必要。事前届出必須！"
+      },
+      {
+        "id": "jinzai-kaihatsu-training-record",
+        "name": "訓練記録（受講証明書・請求書）",
+        "type": "guidance",
+        "how_to_obtain": "訓練終了後、研修機関から受講証明書・領収書を受領。社内訓練の場合はOJT訓練日誌を作成。"
+      },
+      {
+        "id": "jinzai-kaihatsu-application",
+        "name": "支給申請書（様式6号）",
+        "type": "link",
+        "form_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html",
+        "notes": "訓練終了後2か月以内に都道府県労働局へ提出。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "従業員の研修・スキルアップが目標",
+        "人材育成に課題がある",
+        "新技術・新システム導入に伴う研修を計画中"
+      ],
+      "low_score_conditions": [
+        "研修・育成の予定がない"
+      ]
+    },
+    "tags": [
+      "研修",
+      "人材育成",
+      "スキルアップ",
+      "資格取得",
+      "OFF-JT",
+      "OJT"
+    ],
+    "application_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/",
+    "deadline": "2025年随時",
+    "application_method": "申請"
+  },
+  {
+    "id": "gyoumu-kaizen",
+    "name": "業務改善助成金",
+    "short_name": "業務改善助成金",
+    "category": "賃上げ・業務効率化",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/zigyonushi/shienjigyou/02.html",
+    "max_amount": "最大600万円（引上げ額・コースによる）",
+    "subsidy_rate": "4/5〜9/10（小規模事業者）",
+    "description": "最低賃金引上げに向けた業務改善（設備投資等）を行い、賃金を引き上げた事業主への助成金。機械設備・ICT機器・POSシステム等の導入が対象。",
+    "eligibility": {
+      "company_size": "中小企業・小規模事業者（地域別最低賃金＋30円以内の賃金の労働者がいること）",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "設備投資",
+        "賃上げ",
+        "業務効率化",
+        "IT化"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "gyoumu-kaizen-plan",
+        "name": "業務改善計画書（交付申請書附属書類）",
+        "type": "draft",
+        "description": "設備投資の内容・生産性向上効果・賃金引上げ計画を記載",
+        "draft_topic": "業務改善助成金の業務改善計画書・賃金引上げ計画",
+        "notes": "賃金引上げの証明（就業規則改定や賃金台帳）が後から必要。先に就業規則を確認。"
+      },
+      {
+        "id": "gyoumu-kaizen-quote",
+        "name": "設備・機器の見積書",
+        "type": "guidance",
+        "how_to_obtain": "導入予定の機械・ICT機器・POSレジ等の業者から見積書を取得。見積書には品名・型番・金額を明示。"
+      },
+      {
+        "id": "gyoumu-kaizen-application",
+        "name": "交付申請書（様式第1号）",
+        "type": "link",
+        "form_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/zigyonushi/shienjigyou/02.html",
+        "notes": "設備導入・賃金引上げの前に事前申請が必要。都道府県労働局へ提出。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "最低賃金近くの賃金の従業員がいる",
+        "設備投資による業務効率化を検討中",
+        "賃上げを検討している",
+        "POSレジ・ICT機器の導入を考えている"
+      ],
+      "low_score_conditions": [
+        "全員が最低賃金より十分高い賃金",
+        "設備投資の予定がない"
+      ]
+    },
+    "tags": [
+      "賃上げ",
+      "最低賃金",
+      "設備投資",
+      "POSレジ",
+      "業務効率化",
+      "小規模事業者"
+    ],
+    "application_url": "https://www.meti.go.jp/",
+    "deadline": "2025年7月31日",
+    "application_method": "電子申請"
+  },
+  {
+    "id": "hatarakikata-kaikaku",
+    "name": "働き方改革推進支援助成金（時間外労働等改善助成金）",
+    "short_name": "働き方改革助成金",
+    "category": "労務改善・働き方改革",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000148322.html",
+    "max_amount": "最大200万円（コースによる）",
+    "subsidy_rate": "3/4（小規模事業者は4/5）",
+    "description": "時間外労働の上限規制対応・勤務間インターバル導入・賃金引上げ等の労働環境改善に取り組む中小企業を支援。勤怠管理システム・労務管理ソフトの導入も対象。",
+    "eligibility": {
+      "company_size": "中小企業（業種別の中小企業定義による）",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "労働時間削減",
+        "勤怠管理",
+        "働き方改革",
+        "IT化",
+        "業務効率化"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "hatarakikata-plan",
+        "name": "取組計画書",
+        "type": "draft",
+        "description": "働き方改革の具体的な取り組み内容・スケジュール・目標値（労働時間削減目標等）を記載",
+        "draft_topic": "働き方改革推進支援助成金の取組計画書（時間外労働削減・勤怠管理改善計画）",
+        "notes": "「時間外労働何時間削減」など数値目標の設定が重要。"
+      },
+      {
+        "id": "hatarakikata-work-rules",
+        "name": "就業規則（時間外労働に関する規定）",
+        "type": "guidance",
+        "how_to_obtain": "自社の就業規則を確認。未整備の場合は社労士に作成依頼を推奨。労働基準監督署への届出済みのものを準備。"
+      },
+      {
+        "id": "hatarakikata-application",
+        "name": "交付申請書",
+        "type": "link",
+        "form_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000148322.html",
+        "notes": "都道府県労働局雇用環境・均等部（室）へ申請。事前相談を推奨。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "長時間労働・残業が課題",
+        "勤怠管理システムの導入を検討",
+        "働き方改革への対応が必要",
+        "労働環境改善が目標"
+      ],
+      "low_score_conditions": [
+        "労働時間管理が既に適切に行われている"
+      ]
+    },
+    "tags": [
+      "働き方改革",
+      "残業削減",
+      "勤怠管理",
+      "労務改善",
+      "システム導入"
+    ],
+    "application_url": "https://www.mhlw.go.jp/",
+    "deadline": "2025年9月30日",
+    "application_method": "書面申請"
+  },
+  {
+    "id": "ryouritsu",
+    "name": "両立支援等助成金（出生時両立支援コース・育児休業等支援コース）",
+    "short_name": "両立支援助成金",
+    "category": "育児・介護支援",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/ryouritsu01.html",
+    "max_amount": "最大130万円（コース・回数による）",
+    "subsidy_rate": "定額支給",
+    "description": "育児休業・産後パパ育休取得・職場復帰支援等を行った中小企業事業主への助成金。男性育休取得や職場復帰支援の取り組みを評価。",
+    "eligibility": {
+      "company_size": "中小企業",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "育児支援",
+        "女性活躍推進",
+        "男性育休推進",
+        "人材定着"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "ryouritsu-support-plan",
+        "name": "育児休業等支援取組計画書",
+        "type": "draft",
+        "description": "育児休業取得・職場復帰に関する具体的な支援計画を記載",
+        "draft_topic": "両立支援等助成金の育児休業支援・職場復帰支援計画書",
+        "notes": "育児・介護休業規程の整備が必要。就業規則に育休規定が明記されているか確認を。"
+      },
+      {
+        "id": "ryouritsu-leave-docs",
+        "name": "育児休業関連書類（休業申出書・復職日がわかる書類等）",
+        "type": "guidance",
+        "how_to_obtain": "対象労働者の育児休業申出書、育児休業期間が確認できる書類を準備。会社として保管している人事書類を確認。"
+      },
+      {
+        "id": "ryouritsu-application",
+        "name": "支給申請書",
+        "type": "link",
+        "form_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/ryouritsu01.html",
+        "notes": "育休取得・職場復帰後に都道府県労働局雇用環境・均等部（室）へ申請。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "育児休業取得者がいる・いる予定",
+        "女性従業員・子育て世代が多い",
+        "人材定着・定着率向上が課題"
+      ],
+      "low_score_conditions": [
+        "従業員が全員独身・高齢で育児休業取得の見込みがない"
+      ]
+    },
+    "tags": [
+      "育児",
+      "育休",
+      "女性活躍",
+      "男性育休",
+      "職場復帰",
+      "人材定着"
+    ],
+    "application_url": "https://www.enecho.meti.go.jp/",
+    "deadline": "2025年6月30日",
+    "application_method": "電子申請"
+  },
+  {
+    "id": "shoene",
+    "name": "省エネルギー投資促進支援事業費補助金",
+    "short_name": "省エネ補助金",
+    "category": "省エネ・脱炭素",
+    "administering_body": "一般社団法人環境共創イニシアチブ（SII）",
+    "official_url": "https://sii.or.jp/",
+    "max_amount": "先進設備等：15億円、エネルギー管理支援型：1億円",
+    "subsidy_rate": "1/3〜1/2",
+    "description": "省エネルギー設備（高効率空調・LED照明・コンプレッサー等）の導入を支援。エネルギーコスト削減と脱炭素化に有効。製造業・商業施設・サービス業で活用が多い。",
+    "eligibility": {
+      "company_size": "中小企業・大企業",
+      "industries": [
+        "全業種（エネルギーを多く使う業種に特に有効）"
+      ],
+      "goals": [
+        "省エネ",
+        "コスト削減",
+        "脱炭素",
+        "設備投資",
+        "環境対策"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "shoene-energy-plan",
+        "name": "省エネルギー効果計算書・投資計画書",
+        "type": "draft",
+        "description": "現状のエネルギー使用量・導入設備の仕様・削減効果（GJ/年）・投資回収期間を記載",
+        "draft_topic": "省エネ補助金の省エネルギー効果計算・投資計画書",
+        "notes": "エネルギーの削減量（GJ/年）を定量的に示す必要あり。設備業者と協力して数値を算出すること。"
+      },
+      {
+        "id": "shoene-energy-usage",
+        "name": "エネルギー使用実績（直近2〜3年分の電力・ガス・燃料使用量）",
+        "type": "guidance",
+        "how_to_obtain": "電力会社の請求書・使用量明細を保管。ガス・燃料は各社の明細書を準備。電力会社にまとめた年間使用量データを問い合わせることも可能。"
+      },
+      {
+        "id": "shoene-quote",
+        "name": "設備機器の見積書・仕様書",
+        "type": "guidance",
+        "how_to_obtain": "導入予定の省エネ設備（空調・照明・コンプレッサー等）の設備業者から見積書・仕様書を取得。省エネ性能を示すカタログも準備。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "省エネ・脱炭素が目標",
+        "製造業・物流・飲食・ホテル等エネルギー多消費業種",
+        "空調・照明・コンプレッサー等の老朽化設備がある",
+        "電気代・エネルギーコストが高い"
+      ],
+      "low_score_conditions": [
+        "オフィス系でエネルギー消費が少ない",
+        "設備投資の予算がない"
+      ]
+    },
+    "tags": [
+      "省エネ",
+      "脱炭素",
+      "空調",
+      "LED",
+      "エネルギーコスト削減",
+      "製造業"
+    ],
+    "application_url": "https://www.env.go.jp/",
+    "deadline": "2025年7月31日",
+    "application_method": "電子申請"
+  },
+  {
+    "id": "jigyou-shokei",
+    "name": "事業承継・引継ぎ補助金",
+    "short_name": "事業承継補助金",
+    "category": "事業承継・M&A",
+    "administering_body": "中小企業庁",
+    "official_url": "https://jsh.go.jp/",
+    "max_amount": "経営革新枠：800万円、専門家活用枠：600万円",
+    "subsidy_rate": "1/2〜2/3",
+    "description": "事業承継・M&A後に行う経営革新の取り組みや、M&A専門家への費用を支援。事業を引き継いだ後の新たな挑戦に最適。",
+    "eligibility": {
+      "company_size": "中小企業・小規模事業者",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "事業承継",
+        "M&A",
+        "後継者育成",
+        "事業転換",
+        "新規事業"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "shokei-innovation-plan",
+        "name": "経営革新計画書",
+        "type": "draft",
+        "description": "承継後の経営革新・新事業展開の具体的内容・目標・実施体制を記載",
+        "draft_topic": "事業承継補助金の経営革新計画書（承継後の新規取り組み計画）",
+        "notes": "「承継があったからこそできる革新」を強調。単なる現状維持は採択されにくい。"
+      },
+      {
+        "id": "shokei-succession-docs",
+        "name": "事業承継を証明する書類（株式譲渡契約書・商業登記等）",
+        "type": "guidance",
+        "how_to_obtain": "株式譲渡の場合は株式譲渡契約書、代表者変更の場合は商業登記履歴事項全部証明書を準備。法務局（https://houmukyoku.moj.go.jp/）でオンライン取得可能。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "事業承継・経営者交代が最近あった",
+        "M&Aを検討・実施済み",
+        "承継後の新規事業・業態変更を計画中"
+      ],
+      "low_score_conditions": [
+        "事業承継の予定がない",
+        "承継後5年以上経過"
+      ]
+    },
+    "tags": [
+      "事業承継",
+      "M&A",
+      "後継者",
+      "経営革新",
+      "事業転換"
+    ],
+    "application_url": "https://www.meti.go.jp/",
+    "deadline": "2025年8月31日",
+    "application_method": "電子申請"
+  },
+  {
+    "id": "startup-sbir",
+    "name": "中小企業イノベーション創出推進事業（SBIR）",
+    "short_name": "スタートアップ・研究開発補助金（SBIR）",
+    "category": "研究開発・スタートアップ",
+    "administering_body": "中小企業庁・各省庁",
+    "official_url": "https://www.chusho.meti.go.jp/keiei/gijut/sbir/",
+    "max_amount": "フェーズ1：数百万円〜、フェーズ2：3,000万円程度",
+    "subsidy_rate": "2/3",
+    "description": "革新的な技術・サービスの研究開発を行うスタートアップ・中小企業への補助金。政府調達ニーズに沿った研究開発テーマで支援。テック・ディープテック系に有効。",
+    "eligibility": {
+      "company_size": "スタートアップ・中小企業",
+      "industries": [
+        "IT・情報通信業",
+        "製造業（先端技術）",
+        "バイオ・医療",
+        "環境・エネルギー",
+        "その他先端技術分野"
+      ],
+      "goals": [
+        "研究開発",
+        "新技術開発",
+        "スタートアップ支援",
+        "社会課題解決"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "sbir-research-plan",
+        "name": "研究開発計画書・提案書",
+        "type": "draft",
+        "description": "研究開発テーマの概要・独自性・社会的意義・実施体制・工程表を記載",
+        "draft_topic": "SBIR（中小企業技術革新研究開発事業）の研究開発提案書・計画書",
+        "notes": "政府調達ニーズと自社技術の接続点を明確に記載することが重要。"
+      },
+      {
+        "id": "sbir-company-overview",
+        "name": "会社概要・技術者プロフィール",
+        "type": "draft",
+        "description": "自社の技術力・開発実績・チーム構成を示す資料",
+        "draft_topic": "スタートアップ・研究開発企業の会社概要・技術実績資料",
+        "notes": "技術者の資格・経歴・特許等があれば積極的に記載。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "先端技術・研究開発が主力",
+        "社会課題解決型のビジネスモデル",
+        "スタートアップ・創業間もない",
+        "特許・独自技術を保有"
+      ],
+      "low_score_conditions": [
+        "既存技術の横展開のみ",
+        "研究開発要素がない"
+      ]
+    },
+    "tags": [
+      "スタートアップ",
+      "研究開発",
+      "先端技術",
+      "イノベーション",
+      "ディープテック"
+    ],
+    "application_url": "https://www.sbir.go.jp/",
+    "deadline": "2025年9月30日",
+    "application_method": "オンライン申請"
+  },
+  {
+    "id": "chiiki-mirai",
+    "name": "地域未来投資促進補助金",
+    "short_name": "地域未来投資補助金",
+    "category": "地域経済・地方創生",
+    "administering_body": "経済産業省・地方経済産業局",
+    "official_url": "https://www.meti.go.jp/policy/sme_chiiki/chiiki_mirai/",
+    "max_amount": "最大5,000万円",
+    "subsidy_rate": "1/2（先端技術型は2/3）",
+    "description": "地域の特性を生かして高い付加価値を創出し、地域内外の事業者に対する経済的波及効果を及ぼす事業への支援。地方・地域密着型の大型設備投資に有効。",
+    "eligibility": {
+      "company_size": "中小企業・中堅企業・大企業",
+      "industries": [
+        "製造業",
+        "農業・食品加工",
+        "観光・ホテル",
+        "IT",
+        "医療・福祉"
+      ],
+      "goals": [
+        "設備投資",
+        "地域活性化",
+        "雇用創出",
+        "販路拡大",
+        "観光振興"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "chiiki-investment-plan",
+        "name": "地域未来投資計画書",
+        "type": "draft",
+        "description": "地域経済への波及効果・雇用創出数・投資規模・事業の地域貢献度を記載",
+        "draft_topic": "地域未来投資促進補助金の地域投資計画書（地域経済波及効果・雇用創出計画）",
+        "notes": "地域への経済波及効果（下請け・仕入先への発注額等）を具体的な数値で示すことが重要。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "地方・地域密着型の事業",
+        "雇用創出効果が大きい",
+        "地域資源（農産物・観光等）を活用",
+        "大型設備投資を計画中"
+      ],
+      "low_score_conditions": [
+        "都市部のオフィス系事業",
+        "地域への経済波及効果が限定的"
+      ]
+    },
+    "tags": [
+      "地方創生",
+      "地域経済",
+      "雇用創出",
+      "大型投資",
+      "観光",
+      "製造業"
+    ],
+    "application_url": "https://www.chisou.go.jp/",
+    "deadline": "2025年12月31日",
+    "application_method": "電子申請"
+  },
+  {
+    "id": "green-innovation",
+    "name": "グリーンイノベーション基金事業",
+    "short_name": "グリーンイノベーション基金",
+    "category": "脱炭素・GX",
+    "administering_body": "NEDO（国立研究開発法人新エネルギー・産業技術総合開発機構）",
+    "official_url": "https://www.nedo.go.jp/activities/ZZJP_100196.html",
+    "max_amount": "数億円〜数十億円規模",
+    "subsidy_rate": "2/3（場合によってそれ以上）",
+    "description": "2050年カーボンニュートラル実現に向けた革新的な研究開発・実証事業を支援。水素・洋上風力・次世代蓄電池等の大型プロジェクト向け。主に中堅・大企業向け。",
+    "eligibility": {
+      "company_size": "中堅企業・大企業（研究開発能力のある企業）",
+      "industries": [
+        "エネルギー",
+        "化学・素材",
+        "製造業（先端）",
+        "電力",
+        "水素・アンモニア"
+      ],
+      "goals": [
+        "脱炭素",
+        "研究開発",
+        "GX推進",
+        "再生可能エネルギー",
+        "省エネ"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "green-research-plan",
+        "name": "研究開発計画書（公募要領に準拠）",
+        "type": "draft",
+        "description": "脱炭素・GX技術の開発内容・目標値・実施体制・工程表を記載",
+        "draft_topic": "グリーンイノベーション基金の研究開発計画書（脱炭素技術開発計画）",
+        "notes": "NEDO公募要領の様式に厳密に従って作成。公募ごとに対象テーマが指定されている。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "脱炭素・GXが経営の主要テーマ",
+        "再生可能エネルギー・水素・蓄電池等の先端技術開発",
+        "研究開発部門を持つ中堅・大企業"
+      ],
+      "low_score_conditions": [
+        "中小企業・小規模事業者",
+        "研究開発要素がない",
+        "脱炭素とは関係が薄い事業"
+      ]
+    },
+    "tags": [
+      "脱炭素",
+      "GX",
+      "水素",
+      "再生可能エネルギー",
+      "研究開発",
+      "大企業"
+    ],
+    "application_url": "https://www.env.go.jp/",
+    "deadline": "2025年10月31日",
+    "application_method": "電子申請"
+  },
+  {
+    "id": "jigyou-saikouchiku-digital",
+    "name": "中小企業デジタル化促進事業（DX補助金）",
+    "short_name": "中小企業DX補助金",
+    "category": "DX・デジタル化",
+    "administering_body": "都道府県・各経済産業局（地域により異なる）",
+    "official_url": "https://www.meti.go.jp/policy/it_policy/dx/",
+    "max_amount": "100万円〜500万円（都道府県により異なる）",
+    "subsidy_rate": "1/2〜2/3",
+    "description": "中小企業のDX（デジタルトランスフォーメーション）推進を支援。クラウド活用・業務システム刷新・データ活用等に幅広く対応。各都道府県独自の上乗せ補助もあり。",
+    "eligibility": {
+      "company_size": "中小企業・小規模事業者",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "DX推進",
+        "IT化",
+        "業務効率化",
+        "クラウド活用",
+        "データ活用"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "dx-plan",
+        "name": "DX推進計画書",
+        "type": "draft",
+        "description": "現状のIT活用状況・課題・DX化の目標・導入システムの概要・期待効果を記載",
+        "draft_topic": "中小企業DX補助金のDX推進計画書（デジタル化・業務改善計画）",
+        "notes": "「DX化により何がどう変わるか」を具体的なビフォーアフターで示すことが重要。"
+      },
+      {
+        "id": "dx-quote",
+        "name": "導入システム・サービスの見積書",
+        "type": "guidance",
+        "how_to_obtain": "導入予定のクラウドサービス・システム業者から見積書を取得。SaaS等の場合は月額・年額の費用と機能の説明資料も準備。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "DX・デジタル化が目標",
+        "紙・FAX中心の業務をデジタル化したい",
+        "クラウド・SaaS導入を検討中",
+        "データ活用・分析を始めたい"
+      ],
+      "low_score_conditions": [
+        "IT化・デジタル化が既に十分進んでいる"
+      ]
+    },
+    "tags": [
+      "DX",
+      "デジタル化",
+      "クラウド",
+      "SaaS",
+      "業務効率化",
+      "中小企業"
+    ],
+    "application_url": "https://www.meti.go.jp/",
+    "deadline": "2025年9月30日",
+    "application_method": "電子申請"
+  }
+]
