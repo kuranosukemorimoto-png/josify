@@ -10,64 +10,10 @@ const MODELS = {
   SONNET: 'claude-sonnet-4-6',
 };
 
-// jGrants APIから補助金を取得
-async function fetchFromJGrants(keywords) {
-  const fetch = (await import('node-fetch')).default;
-  const results = [];
-  const seen = new Set();
-
-  for (const keyword of keywords) {
-    try {
-      const url = `https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?keyword=${encodeURIComponent(keyword)}&acceptance=1&sort=acceptance_end_datetime&order=ASC`;
-      const res = await fetch(url, { headers: { 'Accept': 'application/json' }, timeout: 8000 });
-      if (!res.ok) continue;
-      const data = await res.json();
-      if (!data.result) continue;
-      for (const s of data.result) {
-        if (!seen.has(s.id)) {
-          seen.add(s.id);
-          results.push({
-            id: s.id,
-            name: s.title,
-            short_name: s.title,
-            administering_body: s.target_area_search || '所管省庁',
-            category: 'jgrants',
-            max_amount: s.subsidy_max_limit ? `${(s.subsidy_max_limit / 10000).toFixed(0)}万円` : '要確認',
-            subsidy_rate: s.subsidy_rate_search || '要確認',
-            official_url: `https://www.jgrants-portal.go.jp/subsidy/${s.id}`,
-            application_url: `https://www.jgrants-portal.go.jp/subsidy/${s.id}`,
-            eligibility: s.target_area_search || '',
-            deadline: s.acceptance_end_datetime ? s.acceptance_end_datetime.slice(0, 10) : '要確認',
-            tags: [],
-            scoring_hints: s.summary_kana || '',
-          });
-        }
-      }
-    } catch (e) {
-      // このキーワードはスキップ
-    }
-  }
-  return results;
-}
-
 async function matchSubsidies(company) {
-  // jGrants APIから取得（失敗時はsubsidies.jsonにフォールバック）
-  let allSubsidies = [];
-  try {
-    const keywords = [
-      company.industry,
-      ...company.goals.slice(0, 2),
-      'DX',
-      'IT導入',
-    ].filter(Boolean);
-    allSubsidies = await fetchFromJGrants(keywords);
-  } catch (e) {}
-
-  // jGrants APIが空ならsubsidies.jsonにフォールバック
-  if (allSubsidies.length === 0) {
-    const subsidiesPath = path.join(__dirname, '../data/subsidies.json');
-    allSubsidies = JSON.parse(fs.readFileSync(subsidiesPath, 'utf8'));
-  }
+  // subsidies.jsonから補助金データを読み込む（必要書類情報あり）
+  const subsidiesPath = path.join(__dirname, '../data/subsidies.json');
+  const allSubsidies = JSON.parse(fs.readFileSync(subsidiesPath, 'utf8'));
 
   const prompt = `あなたは日本の補助金・助成金の専門家です。
 
@@ -138,7 +84,7 @@ priorityはscore 8以上=「高」、6-7=「中」、5以下=「低」`;
   if (start === -1 || end === -1) throw new Error('マッチング結果のJSON解析に失敗しました');
   const matched = JSON.parse(cleaned.slice(start, end + 1));
 
-  // required_documentsを元データから補完（jGrantsデータは空配列）
+  // required_documentsを元データから補完
   return matched
     .sort((a, b) => b.score - a.score)
     .map(item => {
