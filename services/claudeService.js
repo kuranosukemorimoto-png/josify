@@ -1,7 +1,6 @@
 const Anthropic = require('@anthropic-ai/sdk');
 const path = require('path');
 const fs = require('fs');
-const https = require('https');
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -10,11 +9,155 @@ const MODELS = {
   SONNET: 'claude-sonnet-4-6',
 };
 
-async function matchSubsidies(company) {
-  // subsidies.jsonから補助金データを読み込む（必要書類情報あり）
-  const subsidiesPath = path.join(__dirname, '../data/subsidies.json');
-  const allSubsidies = JSON.parse(fs.readFileSync(subsidiesPath, 'utf8'));
+// jGrants APIから現在募集中の補助金を取得
+async function fetchJGrantsSubsidies(keywords) {
+  const fetch = (await import('node-fetch')).default;
+  const seen = new Set();
+  const results = [];
 
+  for (const keyword of keywords) {
+    try {
+      const url = `https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?keyword=${encodeURIComponent(keyword)}&acceptance=1&sort=acceptance_end_datetime&order=ASC`;
+      const res = await fetch(url, { headers: { Accept: 'application/json' } });
+      if (!res.ok) continue;
+      const data = await res.json();
+      if (!Array.isArray(data.result)) continue;
+      for (const s of data.result) {
+        if (!seen.has(s.id)) {
+          seen.add(s.id);
+          results.push({
+            id: s.id,
+            name: s.title,
+            administering_body: s.institution_name || '所管省庁',
+            max_amount: s.subsidy_max_limit > 0 ? `${Math.round(s.subsidy_max_limit / 10000)}万円` : '要確認',
+            subsidy_rate: '要確認',
+            official_url: `https://www.jgrants-portal.go.jp/subsidy/${s.id}`,
+            application_url: `https://www.jgrants-portal.go.jp/subsidy/${s.id}`,
+            deadline: s.acceptance_end_datetime ? s.acceptance_end_datetime.slice(0, 10) : '要確認',
+          });
+        }
+      }
+    } catch (e) { /* スキップ */ }
+  }
+  return results;
+}
+
+// 上位マッチした補助金の必要書類をClaudeで自動生成
+async function generateRequiredDocuments(subsidies) {
+  const prompt = `あなたは日本の補助金申請の専門家です。
+以下の補助金について、申請に一般的に必要な書類を補助金ごとにリストアップしてください。
+
+${subsidies.map(s => `- ID: ${s.id} | 名称: ${s.name}`).join('\n')}
+
+各補助金について3〜5件の必要書類を生成してください。
+typeは "draft"（自分で作成する書類）または "guidance"（第三者機関が発行する書類）を使用。
+
+以下のJSON形式のみ返してください（説明文不要）:
+{
+  "補助金ID": [
+    {"name": "書類名", "description": "内容の説明（1文）", "type": "draft"}
+  ]
+}`;
+
+  const response = await client.messages.create({
+    model: MODELS.HAIKU,
+    max_tokens: 3000,
+    messages: [{ role: 'user', content: prompt }],
+  });
+
+  const text = response.content.find(b => b.type === 'text')?.text?.trim() || '';
+  const cleaned = text.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+  const start = cleaned.indexOf('{');
+  const end = cleaned.lastIndexOf('}');
+  if (start === -1 || end === -1) return {};
+  try {
+    return JSON.parse(cleaned.slice(start, end + 1));
+  } catch {
+    return {};
+  }
+}
+
+async function matchSubsidies(company) {
+  // Step1: jGrants APIから現在募集中の補助金を取得
+  const keywords = [company.industry, ...company.goals.slice(0, 2), 'DX', 'IT'].filter(Boolean);
+  let allSubsidies = await fetchJGrantsSubsidies(keywords);
+
+  // jGrants APIが空ならsubsidies.jsonにフォールバック
+  if (allSubsidies.length === 0) {
+    const subsidiesPath = path.join(__dirname, '../data/subsidies.json');
+    const localData = JSON.parse(fs.readFileSync(subsidiesPath, 'utf8'));
+    return matchWithLocalData(company, localData);
+  }
+
+  // Step2: Claude Haikuでスコアリング・上位5件を選ぶ
+  const scoringPrompt = `あなたは日本の補助金・助成金の専門家です。
+以下の事業者に最も適した補助金をスコアリングして上位5件を選んでください。
+
+【事業者プロフィール】
+業種: ${company.industry}
+従業員数: ${company.employees}
+所在地: ${company.prefecture}
+年商: ${company.revenue}
+設立年数: ${company.established}
+目標・課題: ${company.goals.join('、')}
+事業概要: ${company.description || '特になし'}
+
+【補助金リスト（現在募集中）】
+${JSON.stringify(allSubsidies.slice(0, 50).map(s => ({
+  id: s.id,
+  name: s.name,
+  max_amount: s.max_amount,
+  deadline: s.deadline,
+})), null, 2)}
+
+【ルール】
+- スコア7以上の補助金を最大5件選ぶ
+- JSONのみ返す（説明文不要）
+
+[{
+  "id": "補助金ID",
+  "name": "正式名称",
+  "short_name": "通称（略称）",
+  "administering_body": "実施機関",
+  "category": "カテゴリ",
+  "score": 1〜10,
+  "priority": "高/中/低",
+  "reason": "この事業者に適している理由（2文以内）",
+  "max_amount": "最大補助額",
+  "subsidy_rate": "補助率（不明なら要確認）",
+  "deadline": "締切日",
+  "official_url": "公式URL",
+  "application_url": "申請URL"
+}]
+priorityはscore 8以上=「高」、6-7=「中」、5以下=「低」`;
+
+  const scoringRes = await client.messages.create({
+    model: MODELS.HAIKU,
+    max_tokens: 3000,
+    messages: [{ role: 'user', content: scoringPrompt }],
+  });
+
+  const scoreText = scoringRes.content.find(b => b.type === 'text')?.text?.trim() || '';
+  const cleanedScore = scoreText.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+  const s1 = cleanedScore.indexOf('[');
+  const s2 = cleanedScore.lastIndexOf(']');
+  if (s1 === -1 || s2 === -1) throw new Error('マッチング結果のJSON解析に失敗しました');
+  const topMatches = JSON.parse(cleanedScore.slice(s1, s2 + 1));
+
+  // Step3: 必要書類をClaudeで自動生成
+  const docsMap = await generateRequiredDocuments(topMatches);
+
+  // 必要書類を付与して返す
+  return topMatches
+    .sort((a, b) => b.score - a.score)
+    .map(item => ({
+      ...item,
+      required_documents: docsMap[item.id] || [],
+    }));
+}
+
+// ローカルデータを使ったフォールバック用マッチング
+async function matchWithLocalData(company, allSubsidies) {
   const prompt = `あなたは日本の補助金・助成金の専門家です。
 
 以下の事業者プロフィールと補助金リストを照らし合わせて、適合度をスコアリングしてください。
@@ -30,44 +173,29 @@ async function matchSubsidies(company) {
 
 【補助金リスト】
 ${JSON.stringify(allSubsidies.map(s => ({
-  id: s.id,
-  name: s.name,
-  short_name: s.short_name,
-  category: s.category,
-  administering_body: s.administering_body,
-  max_amount: s.max_amount,
-  subsidy_rate: s.subsidy_rate,
-  official_url: s.official_url,
-  application_url: s.application_url,
-  eligibility: s.eligibility,
-  scoring_hints: s.scoring_hints,
-  tags: s.tags,
+  id: s.id, name: s.name, max_amount: s.max_amount,
+  subsidy_rate: s.subsidy_rate, eligibility: s.eligibility, scoring_hints: s.scoring_hints,
 })), null, 2)}
 
 【ルール】
-- 上記リストの補助金のみ使用（リスト外の補助金は追加しない）
-- スコア7以上の補助金を全て返す（最低1件・最大5件）
-- required_documentsは元データから引用すること
-- 最後にJSONのみ返す（説明文・マークダウン不要）
+- スコア7以上を最大5件・JSONのみ返す
 
-以下のJSON形式で返してください:
 [{
-  "id": "補助金ID（リストのIDをそのまま使用）",
+  "id": "補助金ID",
   "name": "正式名称",
   "short_name": "通称",
   "administering_body": "実施機関",
   "category": "カテゴリ",
   "score": 1〜10,
   "priority": "高/中/低",
-  "reason": "この事業者に適している理由（2文以内）",
+  "reason": "理由（2文以内）",
   "deadline": "公式サイトで要確認",
   "max_amount": "最大補助額",
   "subsidy_rate": "補助率",
   "official_url": "公式URL",
   "application_url": "申請URL",
   "required_documents": []
-}]
-priorityはscore 8以上=「高」、6-7=「中」、5以下=「低」`;
+}]`;
 
   const response = await client.messages.create({
     model: MODELS.HAIKU,
@@ -76,15 +204,12 @@ priorityはscore 8以上=「高」、6-7=「中」、5以下=「低」`;
   });
 
   const text = response.content.find(b => b.type === 'text')?.text?.trim() || '';
-
-  // コードブロック除去してからJSON配列を抽出
   const cleaned = text.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
   const start = cleaned.indexOf('[');
   const end = cleaned.lastIndexOf(']');
   if (start === -1 || end === -1) throw new Error('マッチング結果のJSON解析に失敗しました');
   const matched = JSON.parse(cleaned.slice(start, end + 1));
 
-  // required_documentsを元データから補完
   return matched
     .sort((a, b) => b.score - a.score)
     .map(item => {
