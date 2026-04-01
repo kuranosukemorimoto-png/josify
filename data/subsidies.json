@@ -1,7 +1,7 @@
 [
   {
     "id": "monodukuri",
-    "name": "ものづくり・商業・サービス生産性向上促進補助金（第22次公募）",
+    "name": "ものづくり・商業・サービス生産性向上促進補助金（第23次公募）",
     "short_name": "ものづくり補助金",
     "category": "設備投資・生産性向上",
     "administering_body": "全国中小企業団体中央会",
@@ -78,7 +78,7 @@
       "新製品開発"
     ],
     "application_url": "https://portal.monodukuri-hojo.jp/",
-    "deadline": "2026年1月30日（第22次・終了）※次回公募時期は未定",
+    "deadline": "2026年5月8日（第23次・1次締切）",
     "application_method": "電子申請（Jグランツ）"
   },
   {
@@ -150,7 +150,7 @@
       "小規模事業者"
     ],
     "application_url": "https://it-shien.smrj.go.jp/",
-    "deadline": "2026年5月12日（1次締切）※2次以降も予定",
+    "deadline": "2026年5月12日（1次締切）・6月15日（2次）・8月25日（3次）",
     "application_method": "電子申請（IT導入支援事業者経由）"
   },
   {
@@ -303,14 +303,14 @@
   },
   {
     "id": "shinjigyo-shinshutsu",
-    "name": "中小企業新事業進出補助金（第3回）",
+    "name": "中小企業新事業進出補助金（第4回・最終）",
     "short_name": "新事業進出補助金",
     "category": "新分野展開・事業転換",
     "administering_body": "中小企業基盤整備機構",
     "official_url": "https://shinjigyou-shinshutsu.smrj.go.jp/",
     "max_amount": "最大7,000万円（大幅賃上げ特例適用時：最大9,000万円）",
     "subsidy_rate": "1/2（中小企業）",
-    "description": "事業再構築補助金の後継制度。新市場・高付加価値事業への進出を行う中小企業を支援する補助金。既存事業と異なる新規事業への設備投資等が対象。ものづくり補助金との統合も予定されている。",
+    "description": "事業再構築補助金の後継制度。新市場・高付加価値事業への進出を行う中小企業を支援する補助金。既存事業と異なる新規事業への設備投資等が対象。第4回をもって現行制度は終了し、2026年度中にものづくり補助金と統合された「新事業進出・ものづくり補助金」に移行予定。",
     "eligibility": {
       "company_size": "中小企業者",
       "industries": [
@@ -366,7 +366,7 @@
       "大型補助金"
     ],
     "application_url": "https://shinjigyou-shinshutsu.smrj.go.jp/",
-    "deadline": "2026年3月26日（第3回・終了）※次回公募時期は未定",
+    "deadline": "2026年6月19日（第4回・最終）",
     "application_method": "電子申請（Jグランツ）"
   },
   {
