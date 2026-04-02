@@ -9,35 +9,49 @@ const MODELS = {
   SONNET: 'claude-sonnet-4-6',
 };
 
-// jGrants APIから現在募集中の補助金を取得
-async function fetchJGrantsSubsidies(keywords) {
+// jGrants APIから現在募集中の補助金を取得（都道府県フィルタリング付き）
+async function fetchJGrantsSubsidies(keywords, prefecture) {
   const fetch = (await import('node-fetch')).default;
   const seen = new Set();
   const results = [];
 
+  // 全国 + 該当都道府県の2パターンで検索
+  const areaParams = ['全国'];
+  if (prefecture) areaParams.push(prefecture);
+
   for (const keyword of keywords) {
-    try {
-      const url = `https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?keyword=${encodeURIComponent(keyword)}&acceptance=1&sort=acceptance_end_datetime&order=ASC`;
-      const res = await fetch(url, { headers: { Accept: 'application/json' } });
-      if (!res.ok) continue;
-      const data = await res.json();
-      if (!Array.isArray(data.result)) continue;
-      for (const s of data.result) {
-        if (!seen.has(s.id)) {
-          seen.add(s.id);
-          results.push({
-            id: s.id,
-            name: s.title,
-            administering_body: s.institution_name || '所管省庁',
-            max_amount: s.subsidy_max_limit > 0 ? `${Math.round(s.subsidy_max_limit / 10000)}万円` : '要確認',
-            subsidy_rate: '要確認',
-            official_url: `https://www.jgrants-portal.go.jp/subsidy/${s.id}`,
-            application_url: `https://www.jgrants-portal.go.jp/subsidy/${s.id}`,
-            deadline: s.acceptance_end_datetime ? s.acceptance_end_datetime.slice(0, 10) : '要確認',
-          });
+    for (const area of areaParams) {
+      try {
+        const params = new URLSearchParams({
+          keyword,
+          acceptance: '1',
+          sort: 'acceptance_end_datetime',
+          order: 'ASC',
+          target_area_search: area,
+        });
+        const url = `https://api.jgrants-portal.go.jp/exp/v1/public/subsidies?${params}`;
+        const res = await fetch(url, { headers: { Accept: 'application/json' } });
+        if (!res.ok) continue;
+        const data = await res.json();
+        if (!Array.isArray(data.result)) continue;
+        for (const s of data.result) {
+          if (!seen.has(s.id)) {
+            seen.add(s.id);
+            results.push({
+              id: s.id,
+              name: s.title,
+              administering_body: s.institution_name || '所管省庁',
+              target_area: s.target_area_search || '全国',
+              max_amount: s.subsidy_max_limit > 0 ? `${Math.round(s.subsidy_max_limit / 10000)}万円` : '要確認',
+              subsidy_rate: '要確認',
+              official_url: `https://www.jgrants-portal.go.jp/subsidy/${s.id}`,
+              application_url: `https://www.jgrants-portal.go.jp/subsidy/${s.id}`,
+              deadline: s.acceptance_end_datetime ? s.acceptance_end_datetime.slice(0, 10) : '要確認',
+            });
+          }
         }
-      }
-    } catch (e) { /* スキップ */ }
+      } catch (e) { /* スキップ */ }
+    }
   }
   return results;
 }
@@ -78,9 +92,9 @@ typeは "draft"（自分で作成する書類）または "guidance"（第三者
 }
 
 async function matchSubsidies(company) {
-  // Step1: jGrants APIから現在募集中の補助金を取得
+  // Step1: jGrants APIから現在募集中の補助金を取得（都道府県フィルタ付き）
   const keywords = [company.industry, ...company.goals.slice(0, 2), 'DX', 'IT'].filter(Boolean);
-  let allSubsidies = await fetchJGrantsSubsidies(keywords);
+  let allSubsidies = await fetchJGrantsSubsidies(keywords, company.prefecture);
 
   // jGrants APIが空ならsubsidies.jsonにフォールバック
   if (allSubsidies.length === 0) {
@@ -103,15 +117,19 @@ async function matchSubsidies(company) {
 事業概要: ${company.description || '特になし'}
 
 【補助金リスト（現在募集中）】
-${JSON.stringify(allSubsidies.slice(0, 50).map(s => ({
+${JSON.stringify(allSubsidies.slice(0, 60).map(s => ({
   id: s.id,
   name: s.name,
+  target_area: s.target_area,
   max_amount: s.max_amount,
   deadline: s.deadline,
 })), null, 2)}
 
-【ルール】
-- スコア7以上の補助金を最大5件選ぶ
+【絶対ルール — 必ず守ること】
+- 対象地域が「全国」または「${company.prefecture}」の補助金のみ選ぶ
+- 他の都道府県・地域限定の補助金は絶対に含めない（例：東京都限定・北海道限定などは除外）
+- 事業者の業種・規模・目標に合致しない補助金は除外
+- スコア7以上を最大5件選ぶ
 - JSONのみ返す（説明文不要）
 
 [{
