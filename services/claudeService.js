@@ -91,6 +91,106 @@ typeは "draft"（自分で作成する書類）または "guidance"（第三者
   }
 }
 
+// jGrantsに出にくい主要国家補助金・助成金（常時プールに追加）
+const ALWAYS_AVAILABLE_SUBSIDIES = [
+  {
+    id: 'career-up-01',
+    name: 'キャリアアップ助成金（正社員化コース）',
+    administering_body: '厚生労働省',
+    target_area: '全国',
+    max_amount: '最大80万円/人',
+    subsidy_rate: '定額（コース別）',
+    official_url: 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/part_haken/jigyounushi/career.html',
+    application_url: 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/part_haken/jigyounushi/career.html',
+    deadline: '随時受付',
+    relevant_goals: ['人材採用', '人材育成・研修'],
+  },
+  {
+    id: 'gyomu-kaizen-01',
+    name: '業務改善助成金',
+    administering_body: '厚生労働省',
+    target_area: '全国',
+    max_amount: '最大600万円',
+    subsidy_rate: '3/4〜9/10',
+    official_url: 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/zigyonushi/shienjigyou/04.html',
+    application_url: 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/zigyonushi/shienjigyou/04.html',
+    deadline: '随時受付（年度内）',
+    relevant_goals: ['賃金引き上げ', '生産性向上・業務効率化'],
+  },
+  {
+    id: 'jinzai-kaihatsu-01',
+    name: '人材開発支援助成金（人への投資促進コース）',
+    administering_body: '厚生労働省',
+    target_area: '全国',
+    max_amount: '訓練経費の最大75%',
+    subsidy_rate: '1/2〜3/4',
+    official_url: 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html',
+    application_url: 'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/d01-1.html',
+    deadline: '随時受付',
+    relevant_goals: ['人材育成・研修', '人材採用', '生産性向上・業務効率化'],
+  },
+  {
+    id: 'it-donyu-01',
+    name: 'IT導入補助金（デジタル化基盤導入枠）',
+    administering_body: '経済産業省・中小企業庁',
+    target_area: '全国',
+    max_amount: '最大450万円',
+    subsidy_rate: '1/2〜3/4',
+    official_url: 'https://www.it-hojo.jp/',
+    application_url: 'https://www.it-hojo.jp/',
+    deadline: '要確認（複数回公募）',
+    relevant_goals: ['DX・IT化推進', '設備投資・機械導入', '生産性向上・業務効率化'],
+  },
+  {
+    id: 'jizokuka-01',
+    name: '小規模事業者持続化補助金（一般型）',
+    administering_body: '中小企業庁・日本商工会議所',
+    target_area: '全国',
+    max_amount: '最大200万円',
+    subsidy_rate: '2/3',
+    official_url: 'https://r3.jizokukahojokin.info/',
+    application_url: 'https://r3.jizokukahojokin.info/',
+    deadline: '要確認（複数回公募）',
+    relevant_goals: ['販路拡大・マーケティング', '事業拡大・新規展開', '業態転換・新分野展開'],
+  },
+  {
+    id: 'monodukuri-01',
+    name: 'ものづくり・商業・サービス生産性向上促進補助金',
+    administering_body: '中小企業庁',
+    target_area: '全国',
+    max_amount: '最大1,250万円',
+    subsidy_rate: '1/2〜2/3',
+    official_url: 'https://portal.monodukuri-hojo.jp/',
+    application_url: 'https://portal.monodukuri-hojo.jp/',
+    deadline: '要確認（複数回公募）',
+    relevant_goals: ['設備投資・機械導入', '生産性向上・業務効率化', '研究開発・新技術'],
+  },
+  {
+    id: 'jigyou-saikou-01',
+    name: '事業再構築補助金',
+    administering_body: '経済産業省・中小企業庁',
+    target_area: '全国',
+    max_amount: '最大1億5,000万円',
+    subsidy_rate: '1/2〜3/4',
+    official_url: 'https://jigyou-saikouchiku.go.jp/',
+    application_url: 'https://jigyou-saikouchiku.go.jp/',
+    deadline: '要確認（複数回公募）',
+    relevant_goals: ['業態転換・新分野展開', '事業拡大・新規展開'],
+  },
+  {
+    id: 'jigyo-shokei-01',
+    name: '事業承継・引継ぎ補助金',
+    administering_body: '中小企業庁',
+    target_area: '全国',
+    max_amount: '最大800万円',
+    subsidy_rate: '2/3',
+    official_url: 'https://jigyo-shokei.go.jp/',
+    application_url: 'https://jigyo-shokei.go.jp/',
+    deadline: '要確認',
+    relevant_goals: ['事業承継・M&A'],
+  },
+];
+
 // 目標・課題別の補助金キーワードマップ（有名補助金名を直接含む）
 const GOAL_KEYWORDS = {
   '設備投資・機械導入':     ['ものづくり補助金', 'IT導入補助金', '設備投資', '機械設備導入'],
@@ -193,6 +293,16 @@ async function matchSubsidies(company) {
     return matchWithLocalData(company, localData);
   }
 
+  // 目標に合致する常時受付補助金をプールに追加（jGrantsに出にくい有名補助金）
+  const relevantAlways = ALWAYS_AVAILABLE_SUBSIDIES.filter(s =>
+    s.relevant_goals.some(g => (company.goals || []).includes(g))
+  );
+  // 重複しないようにIDで管理して追加
+  const existingIds = new Set(allSubsidies.map(s => s.id));
+  for (const s of relevantAlways) {
+    if (!existingIds.has(s.id)) allSubsidies.push(s);
+  }
+
   // Step2: Claude Haikuでスコアリング・上位5件を選ぶ
   const scoringPrompt = `あなたは日本の補助金・助成金の専門家です。
 以下の事業者に最も適した補助金をスコアリングして上位5件を選んでください。
@@ -208,7 +318,7 @@ async function matchSubsidies(company) {
 事業概要: ${company.description || '特になし'}
 
 【補助金リスト（現在募集中）】
-${JSON.stringify(allSubsidies.slice(0, 60).map(s => ({
+${JSON.stringify(allSubsidies.slice(0, 70).map(s => ({
   id: s.id,
   name: s.name,
   target_area: s.target_area,
@@ -218,14 +328,22 @@ ${JSON.stringify(allSubsidies.slice(0, 60).map(s => ({
 
 【絶対ルール — 必ず守ること】
 - 対象地域が「全国」または「${company.prefecture}」の補助金のみ選ぶ
-- 他の都道府県・地域限定の補助金は絶対に含めない（例：東京都限定・北海道限定などは除外）
-- 事業者の業種と全く無関係な補助金は絶対に含めない（例：建設業者にCO2削減・農業・水産業等は不可）
+- 他の都道府県・地域限定の補助金は絶対に含めない
+- 事業者の業種と全く無関係な補助金は絶対に含めない
 - 事業者の規模・従業員数・年商の要件を満たさない補助金は除外
-- 事業者の目標・課題に全く合致しない補助金は除外
-- 少しでも関連性が低いと判断した場合はスコア6以下として除外すること
+- 事業者の目標・課題に合致しない補助金は除外
+- 少しでも関連性が低い場合はスコア6以下にして選外とすること
 - スコア7以上を最大5件選ぶ（該当なければ件数が少なくてもよい）
-- JSONのみ返す（説明文不要）
 
+【業種別スコアリング基準 — 厳守】
+- 「ものづくり補助金」は製造業・建設業・IT業以外にはスコア5以下
+- 「事業再構築補助金」は業態転換・新分野展開の目標がない場合はスコア5以下
+- 「キャリアアップ助成金」「人材開発支援助成金」は人材採用・育成の目標がある全業種に適用可
+- 「業務改善助成金」は賃金引き上げ・生産性向上の目標がある全業種に適用可
+- 「IT導入補助金」はDX・IT化・生産性向上の目標がある全業種に適用可
+- 「小規模事業者持続化補助金」は販路拡大・事業拡大の目標がある小規模事業者に適用可
+
+JSONのみ返す（説明文不要）:
 [{
   "id": "補助金ID",
   "name": "正式名称",
