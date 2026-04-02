@@ -91,6 +91,22 @@ typeは "draft"（自分で作成する書類）または "guidance"（第三者
   }
 }
 
+// 目標・課題別の補助金キーワードマップ（有名補助金名を直接含む）
+const GOAL_KEYWORDS = {
+  '設備投資・機械導入':     ['ものづくり補助金', 'IT導入補助金', '設備投資', '機械設備導入'],
+  'DX・IT化推進':           ['IT導入補助金', 'デジタル化', 'DX推進', 'IT活用'],
+  '人材採用':               ['キャリアアップ助成金', '雇用調整助成金', '人材確保', '採用助成'],
+  '人材育成・研修':         ['人材開発支援助成金', 'キャリアアップ助成金', '職業訓練', '教育訓練'],
+  '販路拡大・マーケティング': ['小規模事業者持続化補助金', '販路開拓', '展示会', '海外展開'],
+  '生産性向上・業務効率化': ['業務改善助成金', 'IT導入補助金', '生産性向上', '効率化'],
+  '事業拡大・新規展開':     ['事業再構築補助金', '小規模事業者持続化補助金', '新規事業'],
+  '賃金引き上げ':           ['業務改善助成金', 'キャリアアップ助成金', '賃上げ', '最低賃金'],
+  '省エネ・脱炭素':         ['省エネルギー', 'CO2削減', '再生可能エネルギー', '脱炭素'],
+  '事業承継・M&A':          ['事業承継補助金', '後継者育成', '経営承継'],
+  '研究開発・新技術':       ['研究開発', '新技術開発', 'SBIR', 'イノベーション'],
+  '業態転換・新分野展開':   ['事業再構築補助金', '業態転換', '新分野展開'],
+};
+
 // 業種別の基本キーワードマップ
 const INDUSTRY_KEYWORDS = {
   '製造業':         ['製造', 'ものづくり', '設備投資', '生産性向上', '工場'],
@@ -108,13 +124,17 @@ const INDUSTRY_KEYWORDS = {
   'その他':         ['中小企業', '事業者', '経営改善'],
 };
 
-// Step0: 業種マップ＋Claude で会社情報から最適な検索キーワードを生成
+// Step0: 業種マップ＋目標マップ＋Claude で会社情報から最適な検索キーワードを生成
 async function generateSearchKeywords(company) {
-  // 業種別の基本キーワードを取得
-  const baseKeywords = INDUSTRY_KEYWORDS[company.industry] || ['中小企業', '事業者'];
+  // ① 業種別の基本キーワード
+  const industryKeywords = INDUSTRY_KEYWORDS[company.industry] || ['中小企業', '事業者'];
 
+  // ② 目標・課題別のキーワード（有名補助金名含む）
+  const goalKeywords = (company.goals || []).flatMap(g => GOAL_KEYWORDS[g] || []);
+
+  // ③ Claudeが事業概要・規模・地域からマニアックなものを追加
   const prompt = `あなたは日本の補助金・助成金の専門家です。
-以下の事業者プロフィールに基づいて、jGrants（補助金ポータル）で検索すべき追加キーワードを生成してください。
+以下の事業者プロフィールを見て、まだ検索に使っていない追加キーワードを生成してください。
 
 【事業者プロフィール】
 業種: ${company.industry}
@@ -123,43 +143,40 @@ async function generateSearchKeywords(company) {
 年商: ${company.revenue}
 資本金: ${company.capital || '不明'}
 設立年数: ${company.established}
-目標・課題: ${company.goals.join('、')}
+目標・課題: ${(company.goals || []).join('、')}
 事業概要: ${company.description || '特になし'}
 
-【業種の基本キーワード（既に使用済み）】
-${baseKeywords.join('、')}
+【既に使用するキーワード（重複不要）】
+${[...industryKeywords, ...goalKeywords].join('、')}
 
-【追加で生成するキーワードの観点】
-① 規模: 従業員数・年商・資本金から（例: 5人以下→「小規模事業者」、3年以内→「創業」）
-② 目標: 課題・目標に対応する補助金カテゴリ（例: 販路拡大→「販路開拓」）
-③ 地域: 所在地の地域振興・産業振興
-④ 事業概要: 自由記述から連想される補助金キーワード
+【追加キーワードの観点】
+・規模: 従業員数・年商・設立年数から（例: 5人以下→「小規模事業者」、3年以内→「創業補助金」）
+・地域: 所在地の地域産業・振興施策
+・事業概要: 自由記述から連想されるニッチな補助金キーワード
+・中小企業庁・厚生労働省・経産省等の各省庁別補助金
 
 【ルール】
-- 業種と無関係なキーワードは絶対に含めない
-- 上記の基本キーワードと重複しないものを生成する
-- jGrantsの補助金タイトルに実際に使われる日本語で
-- 3〜6個をJSON配列のみで返す（説明文不要）
+- 既存キーワードと重複しないこと
+- 業種と無関係なキーワードは含めない
+- 3〜5個をJSON配列のみで返す
 
 JSON配列のみ返してください:`;
 
+  let claudeKeywords = [];
   try {
     const res = await client.messages.create({
       model: MODELS.HAIKU,
-      max_tokens: 300,
+      max_tokens: 200,
       messages: [{ role: 'user', content: prompt }],
     });
     const text = res.content.find(b => b.type === 'text')?.text?.trim() || '';
     const match = text.match(/\[[\s\S]*\]/);
-    if (match) {
-      const extraKeywords = JSON.parse(match[0]);
-      // 業種マップのキーワード＋Claudeの追加キーワードを合わせて返す
-      return [...baseKeywords, ...extraKeywords];
-    }
+    if (match) claudeKeywords = JSON.parse(match[0]);
   } catch (e) { /* スキップ */ }
 
-  // フォールバック: 業種マップのみ
-  return baseKeywords;
+  // 全キーワードを重複なく結合
+  const all = [...new Set([...industryKeywords, ...goalKeywords, ...claudeKeywords])];
+  return all;
 }
 
 async function matchSubsidies(company) {
