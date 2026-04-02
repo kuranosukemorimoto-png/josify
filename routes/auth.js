@@ -6,9 +6,16 @@ const path = require('path');
 const DATA_FILE = path.join(__dirname, '../data/allowed-emails.json');
 
 function loadData() {
+  if (!fs.existsSync(DATA_FILE)) {
+    const defaultData = { emails: [], admin_password: 'lidea2026' };
+    fs.mkdirSync(path.dirname(DATA_FILE), { recursive: true });
+    fs.writeFileSync(DATA_FILE, JSON.stringify(defaultData, null, 2));
+    return defaultData;
+  }
   return JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
 }
 function saveData(data) {
+  fs.mkdirSync(path.dirname(DATA_FILE), { recursive: true });
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
 }
 
