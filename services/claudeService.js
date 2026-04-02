@@ -91,9 +91,50 @@ typeは "draft"（自分で作成する書類）または "guidance"（第三者
   }
 }
 
+// Step0: Claudeが会社情報から最適な検索キーワードを生成
+async function generateSearchKeywords(company) {
+  const prompt = `あなたは日本の補助金・助成金の専門家です。
+以下の事業者プロフィールに基づいて、jGrants（補助金ポータル）で検索すべき最適なキーワードを生成してください。
+
+【事業者プロフィール】
+業種: ${company.industry}
+従業員数: ${company.employees}
+所在地: ${company.prefecture}
+年商: ${company.revenue}
+設立年数: ${company.established}
+目標・課題: ${company.goals.join('、')}
+事業概要: ${company.description || '特になし'}
+
+【ルール】
+- この事業者の業種・規模・目標に直接関係するキーワードのみ生成する
+- 業種と全く無関係なキーワード（例：農業者なのに「IT」等）は絶対に含めない
+- jGrantsの補助金タイトルに実際に使われる具体的な日本語で生成する
+- 5〜8個のキーワードをJSON配列のみで返す（説明文不要）
+
+例: ["建設", "建築工事", "設備投資", "省エネ", "IT導入"]
+
+JSON配列のみ返してください:`;
+
+  try {
+    const res = await client.messages.create({
+      model: MODELS.HAIKU,
+      max_tokens: 300,
+      messages: [{ role: 'user', content: prompt }],
+    });
+    const text = res.content.find(b => b.type === 'text')?.text?.trim() || '';
+    const match = text.match(/\[[\s\S]*\]/);
+    if (match) return JSON.parse(match[0]);
+  } catch (e) { /* スキップ */ }
+
+  // フォールバック: 従来方式
+  return [company.industry, ...company.goals.slice(0, 2)].filter(Boolean);
+}
+
 async function matchSubsidies(company) {
+  // Step0: Claudeが会社情報から最適な検索キーワードを生成
+  const keywords = await generateSearchKeywords(company);
+
   // Step1: jGrants APIから現在募集中の補助金を取得（都道府県フィルタ付き）
-  const keywords = [company.industry, ...company.goals.slice(0, 2), 'DX', 'IT'].filter(Boolean);
   let allSubsidies = await fetchJGrantsSubsidies(keywords, company.prefecture);
 
   // jGrants APIが空ならsubsidies.jsonにフォールバック
@@ -128,8 +169,11 @@ ${JSON.stringify(allSubsidies.slice(0, 60).map(s => ({
 【絶対ルール — 必ず守ること】
 - 対象地域が「全国」または「${company.prefecture}」の補助金のみ選ぶ
 - 他の都道府県・地域限定の補助金は絶対に含めない（例：東京都限定・北海道限定などは除外）
-- 事業者の業種・規模・目標に合致しない補助金は除外
-- スコア7以上を最大5件選ぶ
+- 事業者の業種と全く無関係な補助金は絶対に含めない（例：建設業者にCO2削減・農業・水産業等は不可）
+- 事業者の規模・従業員数・年商の要件を満たさない補助金は除外
+- 事業者の目標・課題に全く合致しない補助金は除外
+- 少しでも関連性が低いと判断した場合はスコア6以下として除外すること
+- スコア7以上を最大5件選ぶ（該当なければ件数が少なくてもよい）
 - JSONのみ返す（説明文不要）
 
 [{
