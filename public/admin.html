@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Josify 管理画面</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Hiragino Kaku Gothic ProN', sans-serif; background: #F9FAFB; padding: 32px 16px; }
+    .container { max-width: 600px; margin: 0 auto; }
+    h1 { font-size: 22px; color: #1a1a2e; margin-bottom: 4px; }
+    .sub { color: #6B7280; font-size: 13px; margin-bottom: 32px; }
+    .card { background: white; border-radius: 16px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 24px; }
+    h2 { font-size: 16px; color: #374151; margin-bottom: 16px; }
+    .input-row { display: flex; gap: 8px; margin-bottom: 16px; }
+    input[type="email"], input[type="password"] {
+      flex: 1; padding: 12px 14px; border: 2px solid #E5E7EB;
+      border-radius: 10px; font-size: 14px; outline: none;
+    }
+    input:focus { border-color: #f97316; }
+    .btn { padding: 12px 20px; border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; }
+    .btn-add { background: #f97316; color: white; }
+    .btn-del { background: #FEE2E2; color: #DC2626; padding: 6px 12px; font-size: 12px; }
+    .email-list { list-style: none; }
+    .email-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #F3F4F6; font-size: 14px; color: #374151; }
+    .email-item:last-child { border-bottom: none; }
+    .empty { color: #9CA3AF; font-size: 13px; text-align: center; padding: 16px; }
+    .msg { padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 12px; display: none; }
+    .msg.success { background: #D1FAE5; color: #065F46; }
+    .msg.error { background: #FEE2E2; color: #DC2626; }
+    .login-section { margin-bottom: 24px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ Josify 管理画面</h1>
+    <p class="sub">契約クライアントのメールアドレスを管理します</p>
+
+    <div class="card login-section" id="auth-section">
+      <h2>🔐 管理者ログイン</h2>
+      <div class="input-row">
+        <input type="password" id="admin-pw" placeholder="管理者パスワード">
+        <button class="btn btn-add" onclick="adminLogin()">ログイン</button>
+      </div>
+      <div class="msg" id="auth-msg"></div>
+    </div>
+
+    <div id="main-section" style="display:none">
+      <div class="card">
+        <h2>➕ メールアドレスを追加</h2>
+        <div class="msg" id="add-msg"></div>
+        <div class="input-row">
+          <input type="email" id="new-email" placeholder="client@company.com">
+          <button class="btn btn-add" onclick="addEmail()">追加</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>📋 登録済みメールアドレス</h2>
+        <ul class="email-list" id="email-list">
+          <li class="empty">読み込み中...</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let adminPassword = '';
+
+    async function adminLogin() {
+      adminPassword = document.getElementById('admin-pw').value;
+      const res = await fetch('/auth/admin/emails', {
+        headers: { 'x-admin-password': adminPassword }
+      });
+      const msgEl = document.getElementById('auth-msg');
+      if (res.ok) {
+        document.getElementById('auth-section').style.display = 'none';
+        document.getElementById('main-section').style.display = 'block';
+        const data = await res.json();
+        renderList(data.emails);
+      } else {
+        msgEl.textContent = 'パスワードが違います';
+        msgEl.className = 'msg error';
+        msgEl.style.display = 'block';
+      }
+    }
+
+    function renderList(emails) {
+      const ul = document.getElementById('email-list');
+      if (emails.length === 0) {
+        ul.innerHTML = '<li class="empty">まだ登録されていません</li>';
+        return;
+      }
+      ul.innerHTML = emails.map(e => `
+        <li class="email-item">
+          <span>${e}</span>
+          <button class="btn btn-del" onclick="deleteEmail('${e}')">削除</button>
+        </li>
+      `).join('');
+    }
+
+    async function addEmail() {
+      const email = document.getElementById('new-email').value.trim();
+      const msgEl = document.getElementById('add-msg');
+      if (!email) return;
+
+      const res = await fetch('/auth/admin/emails', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-password': adminPassword },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        msgEl.textContent = `✅ ${email} を追加しました`;
+        msgEl.className = 'msg success';
+        msgEl.style.display = 'block';
+        document.getElementById('new-email').value = '';
+        renderList(data.emails);
+      } else {
+        msgEl.textContent = data.error;
+        msgEl.className = 'msg error';
+        msgEl.style.display = 'block';
+      }
+      setTimeout(() => msgEl.style.display = 'none', 3000);
+    }
+
+    async function deleteEmail(email) {
+      const res = await fetch('/auth/admin/emails', {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json', 'x-admin-password': adminPassword },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) renderList(data.emails);
+    }
+  </script>
+</body>
+</html>

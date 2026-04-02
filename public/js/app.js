@@ -221,6 +221,7 @@ function showDocuments() {
               <input type="checkbox" id="chk-${subsidy.id}-${i}">
               <label for="chk-${subsidy.id}-${i}">
                 <span class="doc-item-name">${escapeHtml(doc.name)}</span>
+                ${doc.description ? `<div class="doc-guidance">📝 ${escapeHtml(doc.description)}</div>` : ''}
                 ${doc.how_to_obtain ? `<div class="doc-guidance">📍 ${escapeHtml(doc.how_to_obtain)}</div>` : ''}
               </label>
             </div>

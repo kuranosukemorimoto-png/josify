@@ -3,3 +3,4 @@ node_modules/
 *.command
 .DS_Store
 .claude/
+data/allowed-emails.json
