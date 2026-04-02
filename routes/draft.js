@@ -9,18 +9,24 @@ router.post('/', async (req, res) => {
     return res.status(400).json({ error: '会社情報または補助金情報が不足しています' });
   }
 
-  // 全書類をClaude APIで並列生成（type問わず全て下書き作成）
-  const draftPromises = subsidy.required_documents.map(async doc => {
-    try {
-      const content = await draftDocument(company, subsidy, doc);
-      return { ...doc, generated_content: content, status: 'done' };
-    } catch (err) {
-      console.error(`ドラフト生成エラー (${doc.name}):`, err.message);
-      return { ...doc, generated_content: null, status: 'error', error: err.message };
-    }
-  });
+  // Claude APIを最大3件並列で生成（コスト爆発・タイムアウト防止）
+  const CONCURRENCY = 3;
+  const docs = subsidy.required_documents;
+  const allDocuments = [];
 
-  const allDocuments = await Promise.all(draftPromises);
+  for (let i = 0; i < docs.length; i += CONCURRENCY) {
+    const batch = docs.slice(i, i + CONCURRENCY);
+    const batchResults = await Promise.all(batch.map(async doc => {
+      try {
+        const content = await draftDocument(company, subsidy, doc);
+        return { ...doc, generated_content: content, status: 'done' };
+      } catch (err) {
+        console.error(`ドラフト生成エラー (${doc.name}):`, err.message);
+        return { ...doc, generated_content: null, status: 'error', error: err.message };
+      }
+    }));
+    allDocuments.push(...batchResults);
+  }
 
   res.json({
     subsidy_id: subsidy.id,
