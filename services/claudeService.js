@@ -101,17 +101,23 @@ async function generateSearchKeywords(company) {
 従業員数: ${company.employees}
 所在地: ${company.prefecture}
 年商: ${company.revenue}
+資本金: ${company.capital || '不明'}
 設立年数: ${company.established}
 目標・課題: ${company.goals.join('、')}
 事業概要: ${company.description || '特になし'}
 
-【ルール】
-- この事業者の業種・規模・目標に直接関係するキーワードのみ生成する
-- 業種と全く無関係なキーワード（例：農業者なのに「IT」等）は絶対に含めない
-- jGrantsの補助金タイトルに実際に使われる具体的な日本語で生成する
-- 5〜8個のキーワードをJSON配列のみで返す（説明文不要）
+【キーワード生成の考え方】
+以下の全ての観点からキーワードを導き出すこと:
+① 業種キーワード: 業種名・業態に直結する言葉（例: 建設→「建設工事」「施工」「建築」）
+② 規模キーワード: 従業員数・年商・資本金から判断（例: 5人以下→「小規模事業者」、創業5年以内→「創業」）
+③ 目標キーワード: 課題・目標に対応する補助金カテゴリ（例: 販路拡大→「販路開拓」「展示会」）
+④ 地域キーワード: 所在地に関連する地域振興・産業振興（例: 大阪→「大阪府」や関西圏の特色）
+⑤ 事業概要キーワード: 具体的な事業内容から連想される補助金名称
 
-例: ["建設", "建築工事", "設備投資", "省エネ", "IT導入"]
+【ルール】
+- 業種と全く無関係なキーワードは絶対に含めない
+- jGrantsの補助金タイトルに実際に使われる具体的な日本語で生成する
+- 6〜10個のキーワードをJSON配列のみで返す（説明文不要）
 
 JSON配列のみ返してください:`;
 
@@ -153,6 +159,7 @@ async function matchSubsidies(company) {
 従業員数: ${company.employees}
 所在地: ${company.prefecture}
 年商: ${company.revenue}
+資本金: ${company.capital || '不明'}
 設立年数: ${company.established}
 目標・課題: ${company.goals.join('、')}
 事業概要: ${company.description || '特になし'}
