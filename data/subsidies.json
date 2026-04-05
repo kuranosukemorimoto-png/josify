@@ -46,7 +46,7 @@
         "id": "monodukuri-application-form",
         "name": "交付申請書（様式1）",
         "type": "link",
-        "form_url": "https://portal.monodukuri-hojo.jp/common/bunsho.html",
+        "form_url": "https://portal.monodukuri-hojo.jp/hojo.html",
         "notes": "Jグランツ（電子申請システム）から提出。GビズIDプライムアカウントが必要。"
       },
       {
@@ -910,7 +910,7 @@
       "イノベーション",
       "ディープテック"
     ],
-    "application_url": "https://www.sbir.go.jp/",
+    "application_url": "https://sbir.csti-startup-policy.go.jp/",
     "deadline": "2026年随時（テーマ・省庁により異なる）",
     "application_method": "オンライン申請"
   },
@@ -920,7 +920,7 @@
     "short_name": "地域未来投資補助金",
     "category": "地域経済・地方創生",
     "administering_body": "経済産業省・地方経済産業局",
-    "official_url": "https://www.meti.go.jp/policy/sme_chiiki/chiiki_mirai/",
+    "official_url": "https://www.meti.go.jp/policy/sme_chiiki/chiikimiraitoushi.html",
     "max_amount": "最大5,000万円",
     "subsidy_rate": "1/2（先端技術型は2/3）",
     "description": "地域の特性を生かして高い付加価値を創出し、地域内外の事業者に対する経済的波及効果を及ぼす事業への支援。地方・地域密着型の大型設備投資に有効。",
@@ -971,7 +971,7 @@
       "観光",
       "製造業"
     ],
-    "application_url": "https://www.meti.go.jp/policy/sme_chiiki/chiiki_mirai/",
+    "application_url": "https://www.meti.go.jp/policy/sme_chiiki/chiikimiraitoushi.html",
     "deadline": "2026年随時（地方経済産業局に要確認）",
     "application_method": "電子申請"
   },
@@ -1042,7 +1042,7 @@
     "short_name": "中小企業DX補助金",
     "category": "DX・デジタル化",
     "administering_body": "都道府県・各経済産業局（地域により異なる）",
-    "official_url": "https://www.meti.go.jp/policy/it_policy/dx/",
+    "official_url": "https://it-shien.smrj.go.jp/",
     "max_amount": "100万円〜500万円（都道府県により異なる）",
     "subsidy_rate": "1/2〜2/3",
     "description": "中小企業のDX（デジタルトランスフォーメーション）推進を支援。クラウド活用・業務システム刷新・データ活用等に幅広く対応。各都道府県独自の上乗せ補助もあり。",
@@ -1094,7 +1094,7 @@
       "業務効率化",
       "中小企業"
     ],
-    "application_url": "https://www.meti.go.jp/policy/it_policy/dx/",
+    "application_url": "https://it-shien.smrj.go.jp/",
     "deadline": "2026年随時（都道府県により異なる）",
     "application_method": "電子申請"
   }
