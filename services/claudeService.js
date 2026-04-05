@@ -377,13 +377,18 @@ priorityはscore 8以上=「高」、6-7=「中」、5以下=「低」`;
   // Step3: 必要書類をClaudeで自動生成
   const docsMap = await generateRequiredDocuments(topMatches);
 
-  // 必要書類を付与して返す
+  // 必要書類を付与し、URLは元データを優先
   return topMatches
     .sort((a, b) => b.score - a.score)
-    .map(item => ({
-      ...item,
-      required_documents: docsMap[item.id] || [],
-    }));
+    .map(item => {
+      const orig = allSubsidies.find(s => String(s.id) === String(item.id));
+      return {
+        ...item,
+        official_url: orig?.official_url || item.official_url,
+        application_url: orig?.application_url || item.application_url,
+        required_documents: docsMap[item.id] || [],
+      };
+    });
 }
 
 // ローカルデータを使ったフォールバック用マッチング
@@ -444,7 +449,12 @@ ${JSON.stringify(allSubsidies.map(s => ({
     .sort((a, b) => b.score - a.score)
     .map(item => {
       const original = allSubsidies.find(s => s.id === item.id);
-      return { ...item, required_documents: original?.required_documents || [] };
+      return {
+        ...item,
+        official_url: original?.official_url || item.official_url,
+        application_url: original?.application_url || item.application_url,
+        required_documents: original?.required_documents || [],
+      };
     });
 }
 
