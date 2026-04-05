@@ -3,7 +3,9 @@ const router = express.Router();
 const fs = require('fs');
 const path = require('path');
 
-const DATA_FILE = path.join(__dirname, '../data/allowed-emails.json');
+// 永続ディスク（PERSIST_DIR）があればそちらを使う。なければローカルdata/
+const PERSIST_DIR = process.env.PERSIST_DIR || path.join(__dirname, '../data');
+const DATA_FILE = path.join(PERSIST_DIR, 'allowed-emails.json');
 
 function loadData() {
   if (!fs.existsSync(DATA_FILE)) {
