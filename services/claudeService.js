@@ -355,9 +355,7 @@ JSONのみ返す（説明文不要）:
   "reason": "この事業者に適している理由（2文以内）",
   "max_amount": "最大補助額",
   "subsidy_rate": "補助率（不明なら要確認）",
-  "deadline": "締切日",
-  "official_url": "公式URL",
-  "application_url": "申請URL"
+  "deadline": "締切日"
 }]
 priorityはscore 8以上=「高」、6-7=「中」、5以下=「低」`;
 
@@ -377,15 +375,15 @@ priorityはscore 8以上=「高」、6-7=「中」、5以下=「低」`;
   // Step3: 必要書類をClaudeで自動生成
   const docsMap = await generateRequiredDocuments(topMatches);
 
-  // 必要書類を付与し、URLは元データを優先
+  // 必要書類とURLは元データから取得（Claudeに生成させない）
   return topMatches
     .sort((a, b) => b.score - a.score)
     .map(item => {
       const orig = allSubsidies.find(s => String(s.id) === String(item.id));
       return {
         ...item,
-        official_url: orig?.official_url || item.official_url,
-        application_url: orig?.application_url || item.application_url,
+        official_url: orig?.official_url || '',
+        application_url: orig?.application_url || '',
         required_documents: docsMap[item.id] || [],
       };
     });
@@ -426,10 +424,7 @@ ${JSON.stringify(allSubsidies.map(s => ({
   "reason": "理由（2文以内）",
   "deadline": "公式サイトで要確認",
   "max_amount": "最大補助額",
-  "subsidy_rate": "補助率",
-  "official_url": "公式URL",
-  "application_url": "申請URL",
-  "required_documents": []
+  "subsidy_rate": "補助率"
 }]`;
 
   const response = await client.messages.create({
@@ -451,8 +446,8 @@ ${JSON.stringify(allSubsidies.map(s => ({
       const original = allSubsidies.find(s => s.id === item.id);
       return {
         ...item,
-        official_url: original?.official_url || item.official_url,
-        application_url: original?.application_url || item.application_url,
+        official_url: original?.official_url || '',
+        application_url: original?.application_url || '',
         required_documents: original?.required_documents || [],
       };
     });
