@@ -1097,5 +1097,1323 @@
     "application_url": "https://it-shien.smrj.go.jp/",
     "deadline": "2026年随時（都道府県により異なる）",
     "application_method": "電子申請"
+  },
+  {
+    "id": "tryal-koyo",
+    "name": "トライアル雇用助成金",
+    "short_name": "トライアル雇用",
+    "category": "人材採用",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/trial_koyou.html",
+    "max_amount": "月額最大4万円×3ヶ月（最大12万円/人）",
+    "subsidy_rate": "定額",
+    "description": "就職が困難な求職者を試行的に雇用する事業主に助成。未経験者やブランクのある求職者の採用時に活用可能。",
+    "eligibility": {
+      "company_size": "全規模",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "人材採用",
+        "人材育成・研修"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "tryal-plan",
+        "name": "トライアル雇用実施計画書",
+        "type": "draft",
+        "description": "トライアル雇用の実施内容・期間・対象者を記載",
+        "draft_topic": "トライアル雇用助成金の実施計画書"
+      },
+      {
+        "id": "tryal-result",
+        "name": "トライアル雇用結果報告書",
+        "type": "draft",
+        "description": "雇用結果と常用雇用への移行状況を報告",
+        "draft_topic": "トライアル雇用助成金の結果報告書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "人材採用を検討中",
+        "未経験者の採用を考えている"
+      ],
+      "low_score_conditions": [
+        "採用予定がない"
+      ]
+    },
+    "tags": [
+      "人材採用",
+      "雇用",
+      "未経験者",
+      "全業種"
+    ],
+    "application_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/trial_koyou.html",
+    "deadline": "随時受付",
+    "application_method": "ハローワーク経由"
+  },
+  {
+    "id": "tokutei-kyushoku",
+    "name": "特定求職者雇用開発助成金（特定就職困難者コース）",
+    "short_name": "特定求職者雇用開発助成金",
+    "category": "人材採用",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/tokutei_konnan.html",
+    "max_amount": "最大240万円/人（重度障害者等の場合）",
+    "subsidy_rate": "定額（対象者区分による）",
+    "description": "高齢者・障害者・母子家庭の母等の就職困難者を雇い入れる事業主に対する助成金。",
+    "eligibility": {
+      "company_size": "全規模",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "人材採用"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "tokutei-shinsei",
+        "name": "支給申請書",
+        "type": "draft",
+        "description": "雇入れ日・対象者情報・賃金支払い状況を記載",
+        "draft_topic": "特定求職者雇用開発助成金の支給申請書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "人材採用を検討中",
+        "多様な人材の受け入れに前向き"
+      ],
+      "low_score_conditions": [
+        "採用予定がない"
+      ]
+    },
+    "tags": [
+      "人材採用",
+      "雇用",
+      "高齢者",
+      "障害者",
+      "全業種"
+    ],
+    "application_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/tokutei_konnan.html",
+    "deadline": "随時受付",
+    "application_method": "ハローワーク経由"
+  },
+  {
+    "id": "koyou-chosei",
+    "name": "雇用調整助成金",
+    "short_name": "雇調金",
+    "category": "雇用維持",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/pageL07.html",
+    "max_amount": "1人1日あたり最大8,490円",
+    "subsidy_rate": "中小企業2/3、大企業1/2",
+    "description": "景気の変動等により事業活動の縮小を余儀なくされた場合に、従業員の雇用を維持するために休業・教育訓練・出向を実施する事業主に対する助成金。",
+    "eligibility": {
+      "company_size": "全規模",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "雇用維持",
+        "経営安定"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "koyou-chosei-plan",
+        "name": "休業等実施計画届",
+        "type": "draft",
+        "description": "休業の実施内容・期間・対象者を記載",
+        "draft_topic": "雇用調整助成金の休業等実施計画届"
+      },
+      {
+        "id": "koyou-chosei-shinsei",
+        "name": "支給申請書",
+        "type": "draft",
+        "description": "休業実績・賃金支払い状況を報告",
+        "draft_topic": "雇用調整助成金の支給申請書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "売上減少で従業員の休業を検討",
+        "雇用維持が課題"
+      ],
+      "low_score_conditions": [
+        "業績好調",
+        "人手不足"
+      ]
+    },
+    "tags": [
+      "雇用維持",
+      "休業",
+      "経営危機",
+      "全業種"
+    ],
+    "application_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/pageL07.html",
+    "deadline": "随時受付",
+    "application_method": "ハローワーク経由"
+  },
+  {
+    "id": "65sai-koyo",
+    "name": "65歳超雇用推進助成金",
+    "short_name": "65歳超雇用推進",
+    "category": "人材採用・雇用維持",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.jeed.go.jp/elderly/subsidy/index.html",
+    "max_amount": "最大160万円",
+    "subsidy_rate": "定額",
+    "description": "65歳以上への定年引上げ、定年の廃止、希望者全員を対象とする66歳以上の継続雇用制度の導入を行う事業主に対する助成金。",
+    "eligibility": {
+      "company_size": "全規模",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "人材採用",
+        "雇用維持"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "65sai-shinsei",
+        "name": "支給申請書",
+        "type": "draft",
+        "description": "制度導入内容・対象者数を記載",
+        "draft_topic": "65歳超雇用推進助成金の支給申請書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "高齢者の雇用延長を検討",
+        "定年制度の見直しを予定"
+      ],
+      "low_score_conditions": [
+        "従業員が若い",
+        "定年延長の予定がない"
+      ]
+    },
+    "tags": [
+      "高齢者雇用",
+      "定年延長",
+      "全業種"
+    ],
+    "application_url": "https://www.jeed.go.jp/elderly/subsidy/index.html",
+    "deadline": "随時受付",
+    "application_method": "独立行政法人高齢・障害・求職者雇用支援機構"
+  },
+  {
+    "id": "shougaisha-koyou",
+    "name": "障害者雇用助成金（障害者介助等助成金）",
+    "short_name": "障害者雇用助成金",
+    "category": "人材採用",
+    "administering_body": "独立行政法人高齢・障害・求職者雇用支援機構",
+    "official_url": "https://www.jeed.go.jp/disability/subsidy/index.html",
+    "max_amount": "月額最大13万円（介助者配置の場合）",
+    "subsidy_rate": "定額",
+    "description": "障害者の雇用に伴う施設・設備の整備や適切な雇用管理を行う事業主に対する助成金。",
+    "eligibility": {
+      "company_size": "全規模",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "人材採用"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "shougai-shinsei",
+        "name": "認定申請書",
+        "type": "draft",
+        "description": "助成対象となる措置の内容を記載",
+        "draft_topic": "障害者雇用助成金の認定申請書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "障害者の雇用を検討",
+        "バリアフリー整備を予定"
+      ],
+      "low_score_conditions": [
+        "障害者雇用の予定がない"
+      ]
+    },
+    "tags": [
+      "障害者雇用",
+      "バリアフリー",
+      "全業種"
+    ],
+    "application_url": "https://www.jeed.go.jp/disability/subsidy/index.html",
+    "deadline": "随時受付",
+    "application_method": "独立行政法人高齢・障害・求職者雇用支援機構"
+  },
+  {
+    "id": "chiiki-koyou-kaihatsu",
+    "name": "地域雇用開発助成金（地域雇用開発コース）",
+    "short_name": "地域雇用開発助成金",
+    "category": "人材採用・地域振興",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/chiiki_koyou.html",
+    "max_amount": "最大800万円",
+    "subsidy_rate": "定額",
+    "description": "雇用機会が不足している地域で事業所の設置・整備を行い、地域の求職者を雇い入れる事業主に対する助成金。",
+    "eligibility": {
+      "company_size": "全規模",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "人材採用",
+        "事業拡大・新規展開"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "chiiki-koyou-plan",
+        "name": "計画書",
+        "type": "draft",
+        "description": "事業所設置・整備計画と雇用計画を記載",
+        "draft_topic": "地域雇用開発助成金の計画書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "地方での事業展開を検討",
+        "新規事業所の開設を予定"
+      ],
+      "low_score_conditions": [
+        "都市部のみで事業展開"
+      ]
+    },
+    "tags": [
+      "地域振興",
+      "事業所開設",
+      "地方",
+      "全業種"
+    ],
+    "application_url": "https://www.mhlw.go.jp/seisakunitsuite/bunya/koyou_roudou/koyou/kyufukin/chiiki_koyou.html",
+    "deadline": "随時受付",
+    "application_method": "ハローワーク経由"
+  },
+  {
+    "id": "jisedai-ikusei",
+    "name": "次世代育成支援対策推進法に基づく助成金（くるみん助成金）",
+    "short_name": "くるみん助成金",
+    "category": "両立支援・福利厚生",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kodomo/shokuba_kosodate/kurumin/index.html",
+    "max_amount": "最大50万円",
+    "subsidy_rate": "定額",
+    "description": "くるみん認定・プラチナくるみん認定を受けた中小企業に対する助成金。子育て支援に取り組む企業を支援。",
+    "eligibility": {
+      "company_size": "中小企業（従業員300人以下）",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "人材採用",
+        "福利厚生"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "kurumin-shinsei",
+        "name": "くるみん認定申請書",
+        "type": "draft",
+        "description": "一般事業主行動計画の策定・実施状況を記載",
+        "draft_topic": "くるみん認定申請書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "子育て支援制度の整備を検討",
+        "従業員の定着率向上が課題"
+      ],
+      "low_score_conditions": [
+        "従業員がいない",
+        "個人事業主"
+      ]
+    },
+    "tags": [
+      "子育て支援",
+      "福利厚生",
+      "くるみん",
+      "全業種"
+    ],
+    "application_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kodomo/shokuba_kosodate/kurumin/index.html",
+    "deadline": "随時受付",
+    "application_method": "都道府県労働局"
+  },
+  {
+    "id": "souzoku-zeisei",
+    "name": "事業承継税制（特例措置）",
+    "short_name": "事業承継税制",
+    "category": "事業承継",
+    "administering_body": "中小企業庁・国税庁",
+    "official_url": "https://www.chusho.meti.go.jp/zaimu/shoukei/shoukei_enkatsu_zouyo_souzoku.html",
+    "max_amount": "贈与税・相続税の納税猶予（実質免除）",
+    "subsidy_rate": "株式等に係る贈与税・相続税の100%猶予",
+    "description": "中小企業の事業承継時に、非上場株式等に係る贈与税・相続税の納税を猶予・免除する制度。特例承継計画の提出が必要。",
+    "eligibility": {
+      "company_size": "中小企業",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "事業承継・M&A"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "shokei-zeisei-plan",
+        "name": "特例承継計画",
+        "type": "draft",
+        "description": "後継者・承継時期・事業計画を記載",
+        "draft_topic": "事業承継税制の特例承継計画"
+      },
+      {
+        "id": "shokei-zeisei-ninsho",
+        "name": "認定申請書",
+        "type": "guidance",
+        "how_to_obtain": "都道府県庁の担当窓口に提出。認定経営革新等支援機関の指導・助言が必要。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "事業承継を検討中",
+        "後継者が決まっている"
+      ],
+      "low_score_conditions": [
+        "事業承継の予定がない",
+        "個人事業主"
+      ]
+    },
+    "tags": [
+      "事業承継",
+      "税制",
+      "後継者",
+      "全業種"
+    ],
+    "application_url": "https://www.chusho.meti.go.jp/zaimu/shoukei/shoukei_enkatsu_zouyo_souzoku.html",
+    "deadline": "特例承継計画の提出期限：2026年3月31日",
+    "application_method": "都道府県庁"
+  },
+  {
+    "id": "keiei-ryoku",
+    "name": "経営力向上計画",
+    "short_name": "経営力向上計画",
+    "category": "税制優遇・設備投資",
+    "administering_body": "中小企業庁",
+    "official_url": "https://www.chusho.meti.go.jp/keiei/kyoka/",
+    "max_amount": "固定資産税3年間1/2軽減、即時償却or税額控除10%",
+    "subsidy_rate": "税制優遇",
+    "description": "中小企業が経営力向上計画の認定を受けることで、設備投資時の税制優遇（固定資産税軽減・即時償却等）や金融支援を受けられる制度。",
+    "eligibility": {
+      "company_size": "中小企業者・小規模事業者",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "設備投資",
+        "生産性向上",
+        "経営改善"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "keiei-ryoku-plan",
+        "name": "経営力向上計画申請書",
+        "type": "draft",
+        "description": "現状認識・経営力向上の目標・実施事項を記載",
+        "draft_topic": "経営力向上計画の申請書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "設備投資を検討中",
+        "固定資産税の軽減を受けたい"
+      ],
+      "low_score_conditions": [
+        "設備投資の予定がない"
+      ]
+    },
+    "tags": [
+      "税制優遇",
+      "設備投資",
+      "固定資産税",
+      "全業種"
+    ],
+    "application_url": "https://www.chusho.meti.go.jp/keiei/kyoka/",
+    "deadline": "随時受付",
+    "application_method": "事業分野の主務大臣に申請"
+  },
+  {
+    "id": "keiei-kakushin",
+    "name": "経営革新計画",
+    "short_name": "経営革新計画",
+    "category": "経営改善・融資",
+    "administering_body": "中小企業庁・都道府県",
+    "official_url": "https://www.chusho.meti.go.jp/keiei/kakushin/",
+    "max_amount": "低利融資・信用保証枠拡大等",
+    "subsidy_rate": "融資・保証",
+    "description": "新商品・新サービスの開発や新たな生産方式の導入等の経営革新に取り組む中小企業が、都道府県知事の承認を受けることで各種支援策を利用できる制度。",
+    "eligibility": {
+      "company_size": "中小企業者",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "新製品開発",
+        "生産性向上",
+        "事業拡大・新規展開"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "kakushin-plan",
+        "name": "経営革新計画書",
+        "type": "draft",
+        "description": "新事業の内容・経営目標・実施スケジュールを記載",
+        "draft_topic": "経営革新計画の申請書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "新商品・新サービスの開発を検討",
+        "融資を受けたい"
+      ],
+      "low_score_conditions": [
+        "既存事業の延長のみ"
+      ]
+    },
+    "tags": [
+      "経営革新",
+      "融資",
+      "新商品開発",
+      "全業種"
+    ],
+    "application_url": "https://www.chusho.meti.go.jp/keiei/kakushin/",
+    "deadline": "随時受付",
+    "application_method": "都道府県庁"
+  },
+  {
+    "id": "senkoteki-setubi",
+    "name": "先端設備等導入計画",
+    "short_name": "先端設備等導入計画",
+    "category": "税制優遇・設備投資",
+    "administering_body": "中小企業庁・市区町村",
+    "official_url": "https://www.chusho.meti.go.jp/keiei/seisansei/index.html",
+    "max_amount": "固定資産税ゼロ〜1/2（最大5年間）",
+    "subsidy_rate": "税制優遇",
+    "description": "中小企業が市区町村の導入促進基本計画に基づき先端設備等導入計画を策定し認定を受けることで、固定資産税の特例を受けられる制度。",
+    "eligibility": {
+      "company_size": "中小企業者",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "設備投資",
+        "生産性向上",
+        "DX推進"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "sentan-plan",
+        "name": "先端設備等導入計画",
+        "type": "draft",
+        "description": "導入する設備の内容・労働生産性の向上目標を記載",
+        "draft_topic": "先端設備等導入計画の申請書"
+      },
+      {
+        "id": "sentan-kakunin",
+        "name": "認定経営革新等支援機関の確認書",
+        "type": "guidance",
+        "how_to_obtain": "税理士・中小企業診断士等の認定支援機関に計画の確認を依頼。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "設備投資を検討中",
+        "固定資産税の軽減を受けたい"
+      ],
+      "low_score_conditions": [
+        "設備投資の予定がない"
+      ]
+    },
+    "tags": [
+      "税制優遇",
+      "設備投資",
+      "固定資産税",
+      "先端設備",
+      "全業種"
+    ],
+    "application_url": "https://www.chusho.meti.go.jp/keiei/seisansei/index.html",
+    "deadline": "随時受付（市区町村による）",
+    "application_method": "市区町村"
+  },
+  {
+    "id": "sougyou-hojokin",
+    "name": "創業助成金（東京都）",
+    "short_name": "創業助成金（東京都）",
+    "category": "創業支援",
+    "administering_body": "東京都中小企業振興公社",
+    "official_url": "https://www.tokyo-kosha.or.jp/support/sogyo/",
+    "max_amount": "最大400万円",
+    "subsidy_rate": "2/3",
+    "description": "都内で創業を予定している者、または創業後5年未満の中小企業者に対する助成金。賃借料・広告費・従業員人件費等が対象。",
+    "eligibility": {
+      "company_size": "創業予定者・創業5年未満",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "創業",
+        "事業拡大・新規展開"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "sogyo-plan",
+        "name": "事業計画書",
+        "type": "draft",
+        "description": "創業の動機・事業内容・収支計画を記載",
+        "draft_topic": "創業助成金の事業計画書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "東京都内で創業予定",
+        "創業5年未満"
+      ],
+      "low_score_conditions": [
+        "東京都以外",
+        "創業5年以上"
+      ]
+    },
+    "tags": [
+      "創業",
+      "スタートアップ",
+      "東京都"
+    ],
+    "application_url": "https://www.tokyo-kosha.or.jp/support/sogyo/",
+    "deadline": "年2回程度公募",
+    "application_method": "電子申請"
+  },
+  {
+    "id": "osaka-sougyou",
+    "name": "大阪府スタートアップ支援事業補助金",
+    "short_name": "大阪スタートアップ補助金",
+    "category": "創業支援",
+    "administering_body": "大阪府・大阪産業局",
+    "official_url": "https://www.obda.or.jp/",
+    "max_amount": "最大100万円",
+    "subsidy_rate": "1/2〜2/3",
+    "description": "大阪府内で創業・スタートアップを目指す者への支援。事業計画策定支援やマッチング支援も含む総合的な創業支援プログラム。",
+    "eligibility": {
+      "company_size": "創業予定者・創業間もない事業者",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "創業",
+        "事業拡大・新規展開"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "osaka-sogyo-plan",
+        "name": "事業計画書",
+        "type": "draft",
+        "description": "事業内容・市場分析・収支計画を記載",
+        "draft_topic": "大阪府スタートアップ支援の事業計画書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "大阪府内で創業予定",
+        "創業間もない"
+      ],
+      "low_score_conditions": [
+        "大阪府以外"
+      ]
+    },
+    "tags": [
+      "創業",
+      "スタートアップ",
+      "大阪府"
+    ],
+    "application_url": "https://www.obda.or.jp/",
+    "deadline": "要確認",
+    "application_method": "大阪産業局"
+  },
+  {
+    "id": "osaka-shokibo",
+    "name": "大阪市中小企業チャレンジ支援補助金",
+    "short_name": "大阪市チャレンジ支援",
+    "category": "販路開拓・経営改善",
+    "administering_body": "大阪市",
+    "official_url": "https://www.city.osaka.lg.jp/keizaisenryaku/",
+    "max_amount": "最大50万円",
+    "subsidy_rate": "1/2",
+    "description": "大阪市内の中小企業・小規模事業者が行う新たな取り組み（販路開拓・業務改善・IT化等）を支援する補助金。",
+    "eligibility": {
+      "company_size": "中小企業者・小規模事業者",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "販路拡大",
+        "生産性向上",
+        "DX推進"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "osaka-challenge-plan",
+        "name": "事業計画書",
+        "type": "draft",
+        "description": "取り組み内容・期待効果・費用内訳を記載",
+        "draft_topic": "大阪市チャレンジ支援補助金の事業計画書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "大阪市内の事業者",
+        "新たな取り組みを検討中"
+      ],
+      "low_score_conditions": [
+        "大阪市以外"
+      ]
+    },
+    "tags": [
+      "販路開拓",
+      "経営改善",
+      "大阪市",
+      "中小企業"
+    ],
+    "application_url": "https://www.city.osaka.lg.jp/keizaisenryaku/",
+    "deadline": "要確認（年度ごと）",
+    "application_method": "大阪市経済戦略局"
+  },
+  {
+    "id": "nihon-seisakukinyu-sougyou",
+    "name": "新規開業資金（日本政策金融公庫）",
+    "short_name": "新規開業資金",
+    "category": "創業融資",
+    "administering_body": "日本政策金融公庫",
+    "official_url": "https://www.jfc.go.jp/n/finance/search/01_sinkikaigyou_m.html",
+    "max_amount": "最大7,200万円（うち運転資金4,800万円）",
+    "subsidy_rate": "融資（低利）",
+    "description": "新たに事業を始める方や事業開始後おおむね7年以内の方を対象とした融資制度。無担保・無保証人で利用可能な場合も。",
+    "eligibility": {
+      "company_size": "創業予定者・創業7年以内",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "創業",
+        "事業拡大・新規展開",
+        "設備投資"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "jfc-sogyo-plan",
+        "name": "創業計画書",
+        "type": "draft",
+        "description": "創業の動機・事業内容・市場分析・財務計画等を記載",
+        "draft_topic": "日本政策金融公庫の創業計画書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "創業予定",
+        "創業7年以内",
+        "資金調達が必要"
+      ],
+      "low_score_conditions": [
+        "創業7年以上",
+        "資金に余裕がある"
+      ]
+    },
+    "tags": [
+      "創業",
+      "融資",
+      "日本政策金融公庫",
+      "全業種"
+    ],
+    "application_url": "https://www.jfc.go.jp/n/finance/search/01_sinkikaigyou_m.html",
+    "deadline": "随時受付",
+    "application_method": "日本政策金融公庫の各支店"
+  },
+  {
+    "id": "shokei-zeisei-kojin",
+    "name": "個人版事業承継税制",
+    "short_name": "個人版事業承継税制",
+    "category": "事業承継",
+    "administering_body": "国税庁・中小企業庁",
+    "official_url": "https://www.chusho.meti.go.jp/zaimu/shoukei/shoukei_kojin_ninntei.html",
+    "max_amount": "贈与税・相続税の納税猶予（実質免除）",
+    "subsidy_rate": "事業用資産に係る贈与税・相続税の100%猶予",
+    "description": "個人事業主の事業承継時に、事業用資産に係る贈与税・相続税の納税を猶予・免除する制度。",
+    "eligibility": {
+      "company_size": "個人事業主",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "事業承継・M&A"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "kojin-shokei-plan",
+        "name": "個人事業承継計画",
+        "type": "draft",
+        "description": "後継者・承継時期・事業計画を記載",
+        "draft_topic": "個人版事業承継税制の承継計画"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "個人事業主で事業承継を検討",
+        "後継者が決まっている"
+      ],
+      "low_score_conditions": [
+        "法人",
+        "事業承継の予定がない"
+      ]
+    },
+    "tags": [
+      "事業承継",
+      "税制",
+      "個人事業主"
+    ],
+    "application_url": "https://www.chusho.meti.go.jp/zaimu/shoukei/shoukei_kojin_ninntei.html",
+    "deadline": "個人事業承継計画の提出期限：2026年3月31日",
+    "application_method": "都道府県庁"
+  },
+  {
+    "id": "nougyou-next",
+    "name": "農業次世代人材投資事業（新規就農者育成総合対策）",
+    "short_name": "新規就農支援",
+    "category": "農業支援",
+    "administering_body": "農林水産省",
+    "official_url": "https://www.maff.go.jp/j/new_farmer/",
+    "max_amount": "年間最大150万円（最長3年間）",
+    "subsidy_rate": "定額",
+    "description": "新たに農業を始める方に対する資金交付。経営開始型では経営開始直後の経営確立を支援。",
+    "eligibility": {
+      "company_size": "新規就農者",
+      "industries": [
+        "農業・林業・水産業"
+      ],
+      "goals": [
+        "創業",
+        "事業拡大・新規展開"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "nougyou-plan",
+        "name": "青年等就農計画",
+        "type": "draft",
+        "description": "就農の動機・営農計画・資金計画を記載",
+        "draft_topic": "新規就農者育成総合対策の就農計画"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "農業での創業を検討",
+        "新規就農者"
+      ],
+      "low_score_conditions": [
+        "農業以外の業種"
+      ]
+    },
+    "tags": [
+      "農業",
+      "新規就農",
+      "創業"
+    ],
+    "application_url": "https://www.maff.go.jp/j/new_farmer/",
+    "deadline": "要確認（自治体による）",
+    "application_method": "市区町村・都道府県"
+  },
+  {
+    "id": "inbound-chiiki",
+    "name": "インバウンド受入環境整備高度化事業",
+    "short_name": "インバウンド整備補助金",
+    "category": "観光・インバウンド",
+    "administering_body": "観光庁",
+    "official_url": "https://www.mlit.go.jp/kankocho/seisaku_seido/kihonkeikaku/inbound_kaifuku/ukeire/kankochi/shien/kodoka.html",
+    "max_amount": "最大1,500万円",
+    "subsidy_rate": "1/2〜1/3",
+    "description": "訪日外国人旅行者の受入環境整備（多言語対応・Wi-Fi整備・キャッシュレス対応等）を行う事業者への補助金。",
+    "eligibility": {
+      "company_size": "全規模",
+      "industries": [
+        "飲食業",
+        "サービス業",
+        "小売業",
+        "宿泊業"
+      ],
+      "goals": [
+        "販路拡大",
+        "設備投資",
+        "インバウンド対応"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "inbound-plan",
+        "name": "事業計画書",
+        "type": "draft",
+        "description": "整備内容・期待効果・費用内訳を記載",
+        "draft_topic": "インバウンド受入環境整備の事業計画書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "インバウンド対応を検討",
+        "観光関連業種"
+      ],
+      "low_score_conditions": [
+        "外国人客の来店がない業種"
+      ]
+    },
+    "tags": [
+      "インバウンド",
+      "観光",
+      "多言語",
+      "キャッシュレス"
+    ],
+    "application_url": "https://www.mlit.go.jp/kankocho/seisaku_seido/kihonkeikaku/inbound_kaifuku/ukeire/kankochi/shien/kodoka.html",
+    "deadline": "要確認（公募期間あり）",
+    "application_method": "観光庁"
+  },
+  {
+    "id": "kaigai-tenkai",
+    "name": "JAPANブランド育成支援等事業",
+    "short_name": "JAPANブランド補助金",
+    "category": "海外展開",
+    "administering_body": "中小企業庁",
+    "official_url": "https://www.chusho.meti.go.jp/shogyo/chiiki/japan_brand/index.html",
+    "max_amount": "最大500万円",
+    "subsidy_rate": "2/3",
+    "description": "中小企業の海外展開・海外販路開拓を支援。海外展示会出展、ECサイト構築、ブランディング等が対象。",
+    "eligibility": {
+      "company_size": "中小企業者",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "販路拡大",
+        "海外展開"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "japan-brand-plan",
+        "name": "事業計画書",
+        "type": "draft",
+        "description": "海外展開の戦略・ターゲット市場・実施内容を記載",
+        "draft_topic": "JAPANブランド育成支援事業の事業計画書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "海外展開を検討",
+        "海外展示会への出展を予定"
+      ],
+      "low_score_conditions": [
+        "国内市場のみ"
+      ]
+    },
+    "tags": [
+      "海外展開",
+      "輸出",
+      "ブランディング",
+      "展示会"
+    ],
+    "application_url": "https://www.chusho.meti.go.jp/shogyo/chiiki/japan_brand/index.html",
+    "deadline": "要確認（年度ごと公募）",
+    "application_method": "電子申請"
+  },
+  {
+    "id": "shokuhin-eisei",
+    "name": "HACCP導入支援事業",
+    "short_name": "HACCP導入支援",
+    "category": "食品衛生・設備投資",
+    "administering_body": "農林水産省",
+    "official_url": "https://www.maff.go.jp/j/shokusan/sanki/haccp/",
+    "max_amount": "最大500万円",
+    "subsidy_rate": "1/2",
+    "description": "食品関連事業者がHACCP（ハサップ）に基づく衛生管理体制を導入するための設備投資・人材育成を支援。",
+    "eligibility": {
+      "company_size": "中小企業者",
+      "industries": [
+        "飲食業",
+        "製造業（食品）"
+      ],
+      "goals": [
+        "設備投資",
+        "品質向上"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "haccp-plan",
+        "name": "HACCP導入計画書",
+        "type": "draft",
+        "description": "導入する衛生管理体制・設備投資内容を記載",
+        "draft_topic": "HACCP導入支援事業の計画書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "食品関連業種",
+        "衛生管理の強化を検討"
+      ],
+      "low_score_conditions": [
+        "食品以外の業種"
+      ]
+    },
+    "tags": [
+      "食品衛生",
+      "HACCP",
+      "飲食業",
+      "食品製造"
+    ],
+    "application_url": "https://www.maff.go.jp/j/shokusan/sanki/haccp/",
+    "deadline": "要確認",
+    "application_method": "農林水産省"
+  },
+  {
+    "id": "welfare-kaigo",
+    "name": "介護職員処遇改善加算",
+    "short_name": "処遇改善加算",
+    "category": "介護・福祉",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/shogu-kaizen/",
+    "max_amount": "介護報酬に上乗せ（月額最大37,000円相当/人）",
+    "subsidy_rate": "介護報酬加算",
+    "description": "介護職員の処遇改善に取り組む介護サービス事業者に対し、介護報酬に上乗せして支給する加算制度。",
+    "eligibility": {
+      "company_size": "全規模",
+      "industries": [
+        "医療・福祉"
+      ],
+      "goals": [
+        "人材採用",
+        "賃金引き上げ"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "kaigo-plan",
+        "name": "処遇改善計画書",
+        "type": "draft",
+        "description": "賃金改善計画・キャリアパス整備計画を記載",
+        "draft_topic": "介護職員処遇改善加算の計画書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "介護事業を運営",
+        "職員の処遇改善を検討"
+      ],
+      "low_score_conditions": [
+        "介護事業以外"
+      ]
+    },
+    "tags": [
+      "介護",
+      "福祉",
+      "賃金改善",
+      "人材確保"
+    ],
+    "application_url": "https://www.mhlw.go.jp/shogu-kaizen/",
+    "deadline": "年度開始前に届出",
+    "application_method": "都道府県・市区町村"
+  },
+  {
+    "id": "kenchiku-shoene",
+    "name": "建築物省エネ化推進事業",
+    "short_name": "建築物省エネ補助金",
+    "category": "省エネ・建築",
+    "administering_body": "国土交通省",
+    "official_url": "https://www.kkj.or.jp/kizon_se/",
+    "max_amount": "最大5,000万円",
+    "subsidy_rate": "1/3",
+    "description": "既存建築物の省エネ改修（断熱改修・高効率設備導入等）を行う事業者への補助金。新築のZEB化も対象。",
+    "eligibility": {
+      "company_size": "全規模",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "省エネ・脱炭素",
+        "設備投資"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "kenchiku-shoene-plan",
+        "name": "省エネ改修計画書",
+        "type": "draft",
+        "description": "改修内容・省エネ効果・費用内訳を記載",
+        "draft_topic": "建築物省エネ化推進事業の計画書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "建物の省エネ改修を検討",
+        "ZEB化を検討"
+      ],
+      "low_score_conditions": [
+        "建物の改修予定がない"
+      ]
+    },
+    "tags": [
+      "省エネ",
+      "建築",
+      "断熱",
+      "ZEB",
+      "全業種"
+    ],
+    "application_url": "https://www.kkj.or.jp/kizon_se/",
+    "deadline": "要確認（公募期間あり）",
+    "application_method": "電子申請"
+  },
+  {
+    "id": "ev-hojokin",
+    "name": "クリーンエネルギー自動車導入促進補助金（CEV補助金）",
+    "short_name": "EV補助金",
+    "category": "省エネ・脱炭素",
+    "administering_body": "経済産業省",
+    "official_url": "https://www.cev-pc.or.jp/",
+    "max_amount": "最大85万円/台（EV）",
+    "subsidy_rate": "定額",
+    "description": "電気自動車（EV）・プラグインハイブリッド車（PHEV）・燃料電池車（FCV）等の購入時に補助金を交付。法人・個人事業主も対象。",
+    "eligibility": {
+      "company_size": "全規模（個人含む）",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "省エネ・脱炭素",
+        "設備投資"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "ev-shinsei",
+        "name": "補助金交付申請書",
+        "type": "guidance",
+        "how_to_obtain": "車両購入後にディーラー経由または次世代自動車振興センターのWebサイトから申請。"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "社用車の買い替えを検討",
+        "EV・PHEVの導入を検討"
+      ],
+      "low_score_conditions": [
+        "車両の購入予定がない"
+      ]
+    },
+    "tags": [
+      "EV",
+      "電気自動車",
+      "脱炭素",
+      "省エネ",
+      "全業種"
+    ],
+    "application_url": "https://www.cev-pc.or.jp/",
+    "deadline": "予算消化次第終了",
+    "application_method": "次世代自動車振興センター"
+  },
+  {
+    "id": "taiyoukou-hojokin",
+    "name": "太陽光発電・蓄電池導入支援補助金",
+    "short_name": "太陽光・蓄電池補助金",
+    "category": "省エネ・再エネ",
+    "administering_body": "環境省・経済産業省",
+    "official_url": "https://www.env.go.jp/earth/post_93.html",
+    "max_amount": "設備費の1/3〜1/2（上限は事業規模による）",
+    "subsidy_rate": "1/3〜1/2",
+    "description": "事業所への太陽光発電設備・蓄電池の導入を支援する補助金。自家消費型が対象。",
+    "eligibility": {
+      "company_size": "全規模",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "省エネ・脱炭素",
+        "設備投資",
+        "コスト削減"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "taiyoukou-plan",
+        "name": "事業計画書",
+        "type": "draft",
+        "description": "導入設備・発電量見込み・CO2削減効果を記載",
+        "draft_topic": "太陽光発電導入の事業計画書"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "太陽光発電の導入を検討",
+        "電気代削減が課題"
+      ],
+      "low_score_conditions": [
+        "再エネの導入予定がない"
+      ]
+    },
+    "tags": [
+      "太陽光",
+      "蓄電池",
+      "再エネ",
+      "脱炭素",
+      "全業種"
+    ],
+    "application_url": "https://www.env.go.jp/earth/post_93.html",
+    "deadline": "要確認（年度ごと公募）",
+    "application_method": "電子申請"
+  },
+  {
+    "id": "telework-josei",
+    "name": "人材確保等支援助成金（テレワークコース）",
+    "short_name": "テレワーク助成金",
+    "category": "働き方改革",
+    "administering_body": "厚生労働省",
+    "official_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/telework_zyosei_R3.html",
+    "max_amount": "最大100万円",
+    "subsidy_rate": "1/2〜3/4",
+    "description": "テレワークを新規導入・実施し、人材確保・離職率低下に取り組む中小企業事業主に対する助成金。",
+    "eligibility": {
+      "company_size": "中小企業",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "DX推進",
+        "人材採用",
+        "働き方改革"
+      ]
+    },
+    "required_documents": [
+      {
+        "id": "telework-plan",
+        "name": "テレワーク実施計画",
+        "type": "draft",
+        "description": "導入するテレワーク制度・対象者・機器整備計画を記載",
+        "draft_topic": "テレワーク助成金の実施計画"
+      }
+    ],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "テレワークの導入を検討",
+        "人材確保・離職防止が課題"
+      ],
+      "low_score_conditions": [
+        "テレワーク不可能な業種"
+      ]
+    },
+    "tags": [
+      "テレワーク",
+      "リモートワーク",
+      "働き方改革",
+      "全業種"
+    ],
+    "application_url": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/telework_zyosei_R3.html",
+    "deadline": "随時受付",
+    "application_method": "都道府県労働局"
+  },
+  {
+    "id": "shoukoukai-marugoto",
+    "name": "商工会・商工会議所による経営支援（まるごと支援）",
+    "short_name": "商工会まるごと支援",
+    "category": "経営支援",
+    "administering_body": "日本商工会議所・全国商工会連合会",
+    "official_url": "https://www.shokokai.or.jp/",
+    "max_amount": "無料（相談・支援費用）",
+    "subsidy_rate": "無料支援",
+    "description": "商工会・商工会議所が中小企業・小規模事業者に対して提供する無料の経営支援。経営計画策定・資金繰り・販路開拓等を幅広くサポート。",
+    "eligibility": {
+      "company_size": "中小企業者・小規模事業者",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "経営改善",
+        "販路拡大",
+        "資金繰り"
+      ]
+    },
+    "required_documents": [],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "経営の相談先を探している",
+        "補助金申請のサポートが必要"
+      ],
+      "low_score_conditions": []
+    },
+    "tags": [
+      "経営支援",
+      "無料相談",
+      "商工会",
+      "全業種"
+    ],
+    "application_url": "https://www.shokokai.or.jp/",
+    "deadline": "随時",
+    "application_method": "最寄りの商工会・商工会議所"
+  },
+  {
+    "id": "yorozu-shien",
+    "name": "よろず支援拠点",
+    "short_name": "よろず支援拠点",
+    "category": "経営支援",
+    "administering_body": "中小企業基盤整備機構",
+    "official_url": "https://yorozu.smrj.go.jp/",
+    "max_amount": "無料（何度でも相談可能）",
+    "subsidy_rate": "無料支援",
+    "description": "中小企業・小規模事業者の経営上のあらゆる悩みに対応する無料の経営相談所。各都道府県に設置。売上拡大・経営改善・創業等を支援。",
+    "eligibility": {
+      "company_size": "中小企業者・小規模事業者・創業予定者",
+      "industries": [
+        "全業種"
+      ],
+      "goals": [
+        "経営改善",
+        "販路拡大",
+        "創業"
+      ]
+    },
+    "required_documents": [],
+    "scoring_hints": {
+      "high_score_conditions": [
+        "経営の相談先を探している",
+        "専門家のアドバイスが必要"
+      ],
+      "low_score_conditions": []
+    },
+    "tags": [
+      "経営相談",
+      "無料相談",
+      "よろず",
+      "全業種"
+    ],
+    "application_url": "https://yorozu.smrj.go.jp/",
+    "deadline": "随時",
+    "application_method": "各都道府県のよろず支援拠点"
   }
 ]
